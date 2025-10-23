@@ -7,22 +7,29 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #000;
+      background-color: black;
       color: gold;
-      text-align: center;
+      display: flex;
       margin: 0;
-      padding: 20px;
     }
-    header {
+    .sidebar {
+      background-color: #111;
+      width: 250px;
+      height: 100vh;
       padding: 20px;
-      background: gold;
-      color: black;
+      text-align: center;
+      box-shadow: 2px 0 5px gold;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 30px;
+    }
+    h2 {
+      color: gold;
     }
     a {
       color: gold;
       text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
     }
     a:hover {
       text-decoration: underline;
@@ -30,22 +37,25 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>LGT – Profile</h1>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="profile.html">Profile</a>
-    </nav>
-  </header>
+  <div class="sidebar">
+    <h2>LGT</h2>
+    <p id="userName">User: Guest</p>
+    <a href="index.html">🏠 Home</a><br><br>
+    <a href="signin.html">🔑 Sign Out</a>
+  </div>
 
-  <main>
-    <h2>About Me</h2>
-    <p>This page will contain information about your LGT team or members.</p>
-    <p>You can add photos, bios, and roles here.</p>
-  </main>
+  <div class="content">
+    <h2>Welcome to Your Profile</h2>
+    <p>Here you can display your personal details or edit your information.</p>
+  </div>
 
-  <footer>
-    <p>© 2025 LGT Science & Technology</p>
-  </footer>
+  <script>
+    const user = localStorage.getItem("lgtUser");
+    if (user) {
+      document.getElementById("userName").textContent = "User: " + user;
+    } else {
+      window.location.href = "signin.html";
+    }
+  </script>
 </body>
 </html>
