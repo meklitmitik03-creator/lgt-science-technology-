@@ -1,90 +1,146 @@
-/* GENERAL STYLES */
+/* 🌟 LGT Science & Technology Style */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 body {
   margin: 0;
-  font-family: "Poppins", Arial, sans-serif;
-  display: flex;
-  height: 100vh;
+  font-family: 'Poppins', sans-serif;
   background-color: #111;
   color: gold;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* SIDEBAR MENU */
 .sidebar {
-  width: 260px;
-  background-color: black;
-  box-shadow: 2px 0 10px gold;
-  padding-top: 30px;
+  width: 270px;
+  background: linear-gradient(180deg, #000, #1a1a1a);
+  box-shadow: 3px 0 15px gold;
+  padding-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
   height: 100%;
+  transition: width 0.3s ease;
+}
+
+.sidebar:hover {
+  width: 290px;
 }
 
 .sidebar h1 {
   color: gold;
-  font-size: 24px;
-  margin-bottom: 30px;
-  border-bottom: 2px solid gold;
+  font-size: 26px;
+  margin-bottom: 40px;
+  border-bottom: 3px solid gold;
   padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px gold;
 }
 
+/* MENU LINKS */
 .nav-links {
   display: flex;
   flex-direction: column;
   width: 100%;
-  text-align: center;
 }
 
 .nav-links a {
   color: gold;
   text-decoration: none;
-  padding: 15px;
+  padding: 18px 0;
   font-size: 18px;
-  font-weight: bold;
-  border-bottom: 1px solid #222;
-  transition: background 0.3s;
+  font-weight: 600;
+  border-left: 5px solid transparent;
+  transition: all 0.3s;
+  text-align: center;
 }
 
 .nav-links a:hover {
   background-color: gold;
   color: black;
+  border-left: 5px solid white;
+  box-shadow: 0 0 15px gold;
 }
 
-/* MAIN CONTENT */
+/* MAIN CONTENT AREA */
 .main {
   flex: 1;
-  margin-left: 260px;
+  margin-left: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  background: radial-gradient(circle at top left, #000 0%, #111 100%);
 }
 
-/* BUTTONS */
+h1, h2 {
+  color: gold;
+  text-shadow: 0 0 10px gold;
+}
+
+p {
+  color: #ddd;
+  font-size: 18px;
+}
+
+/* INPUTS & BUTTONS */
+input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid gold;
+  background-color: #222;
+  color: white;
+  margin: 8px;
+  width: 260px;
+  font-size: 16px;
+  text-align: center;
+}
+
 button {
   background-color: gold;
   color: black;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
+  padding: 12px 25px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  transition: 0.3s;
+  margin-top: 10px;
 }
 
 button:hover {
   background-color: #ffd700;
+  box-shadow: 0 0 20px gold;
 }
 
-/* INPUTS */
-input {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid gold;
+/* PROFILE PICTURE */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid gold;
+  object-fit: cover;
   background-color: #222;
+  margin-bottom: 15px;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  background-color: crimson;
   color: white;
-  margin: 8px;
-  width: 250px;
-  font-size: 16px;
+}
+
+.logout-btn:hover {
+  background-color: red;
+  box-shadow: 0 0 20px red;
+}
+
+/* SCROLL FIX */
+html {
+  scroll-behavior: smooth;
 }
