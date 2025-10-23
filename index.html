@@ -1,210 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <img src="logo.png" alt="LGT Logo" style="width:80px; height:80px; border-radius:50%; margin-bottom:10px;">
-  <h1>LGT – Ethiopian Science and Technology</h1>
-</header><nav>
-  <a href="index.html">Home</a> |
-  <a href="profile.html">Profile</a>
-</nav><a href="signin.html">Sign In</a>
+<head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LGT — Ethiopian Science & Technology</title>
-
-  <style>
-    :root{
-      --brand:#004aad;
-      --accent:#0073e6;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --bg: linear-gradient(180deg,#f8fbff 0%,#eaf2ff 100%);
-      --radius:12px;
-      --maxw:1000px;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter, "Segoe UI", Arial, sans-serif;
-      background:var(--bg);
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-    }
-
-    .container{
-      max-width:var(--maxw);
-      margin:28px auto;
-      padding:20px;
-    }
-
-    header.site{
-      background:linear-gradient(90deg,var(--brand),var(--accent));
-      color:white;
-      padding:28px;
-      border-radius:var(--radius);
-      display:flex;
-      gap:16px;
-      align-items:center;
-      box-shadow:0 6px 24px rgba(2,6,23,0.12);
-    }
-    header.site img.logo{
-      width:72px;
-      height:72px;
-      object-fit:cover;
-      border-radius:8px;
-      border:2px solid rgba(255,255,255,0.12);
-    }
-    header.site .title{
-      flex:1;
-    }
-    header.site h1{
-      margin:0;
-      font-size:1.45rem;
-      letter-spacing:0.4px;
-    }
-    header.site p{margin:4px 0 0; color:rgba(255,255,255,0.9)}
-
-    nav.topnav{
-      display:flex;
-      gap:12px;
-      margin:16px 0;
-    }
-    nav.topnav a{
-      text-decoration:none;
-      color:var(--brand);
-      background:white;
-      padding:8px 12px;
-      border-radius:10px;
-      box-shadow:0 2px 6px rgba(2,6,23,0.06);
-      font-weight:600;
-    }
-    nav.topnav a:hover{transform:translateY(-2px)}
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 360px;
-      gap:18px;
-      margin-top:18px;
-    }
-    .card{
-      background:var(--card);
-      border-radius:12px;
-      padding:20px;
-      box-shadow:0 6px 20px rgba(2,6,23,0.06);
-    }
-
-    .hero .left h2{color:var(--brand); margin-top:0}
-    .cta-row{display:flex; gap:12px; margin-top:12px}
-    .btn{
-      display:inline-block;
-      background:var(--brand);
-      color:white;
-      padding:10px 14px;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--brand);
-      border:2px solid var(--brand);
-      font-weight:600;
-    }
-
-    .features{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px}
-    .feature{
-      padding:12px;
-      border-radius:12px;
-      background:linear-gradient(180deg,#fff,#fbfdff);
-      text-align:center;
-    }
-    .feature h3{margin:8px 0 6px; color:var(--brand)}
-    .muted{color:var(--muted); font-size:0.95rem}
-
-    footer{margin-top:22px; text-align:center; color:var(--muted); font-size:0.95rem}
-    @media(max-width:880px){
-      .hero{grid-template-columns:1fr; }
-      nav.topnav{flex-wrap:wrap}
-      .features{grid-template-columns:1fr 1fr}
-    }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LGT — Home</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-
-    <header class="site">
-      <!-- If you uploaded logo.png, it will show. Otherwise remove the <img> line. -->
-      <img class="logo" src="logo.png" alt="LGT logo" onerror="this.style.display='none'">
-      <div class="title">
-        <h1>LGT — Ethiopian Science & Technology</h1>
-        <p>Inspiring students and innovators across Ethiopia with STEM projects and green tech.</p>
-      </div>
-      <div>
-        <small style="opacity:0.95">Live • GitHub Pages</small>
-      </div>
-    </header>
-
-    <nav class="topnav" aria-label="Main navigation">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#innovation">Innovation</a>
-      <a href="#contact">Contact</a>
+  <aside class="sidebar">
+    <img src="logo.png" alt="LGT logo" class="logo" onerror="this.style.display='none'">
+    <h1>LGT</h1>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">🏠 Home</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="#">🔬 Science</a>
+      <a href="#">🧠 Technology</a>
+      <a href="signin.html">🔑 Sign In</a>
     </nav>
+  </aside>
 
-    <div class="hero">
-      <div class="card left">
-        <h2>Welcome to LGT</h2>
-        <p class="muted">LGT shares simple, practical science & technology projects for students and teachers across Ethiopia. You’ll find solar ideas, smart farming projects, STEM lessons and step-by-step experiments.</p>
-
-        <div class="cta-row">
-          <a class="btn" href="#projects">See Projects</a>
-          <a class="btn secondary" href="#contact">Get Involved</a>
-        </div>
-
-        <div class="features" style="margin-top:18px">
-          <div class="feature">
-            <strong>Hands-on Projects</strong>
-            <h3>Solar & Water</h3>
-            <p class="muted">Low-cost projects you can build at home or school.</p>
-          </div>
-          <div class="feature">
-            <strong>STEM Guides</strong>
-            <h3>Lessons & Quizzes</h3>
-            <p class="muted">Learning materials for classrooms and clubs.</p>
-          </div>
-          <div class="feature">
-            <strong>Community</strong>
-            <h3>Share Ideas</h3>
-            <p class="muted">Submit your project and inspire others.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card right">
-        <h3 id="about">About LGT</h3>
-        <p class="muted">We focus on practical science, renewable energy, and technology education. LGT helps students learn by doing — experiments, small electronics, and environmental projects that matter in Ethiopia.</p>
-
-        <hr style="margin:14px 0">
-
-        <h3 id="projects">Featured Project</h3>
-        <p class="muted">Solar lamp for rural students — build with a small panel, battery, and LED. Simple enough for school workshops.</p>
-
-        <hr style="margin:14px 0">
-
-        <h3 id="contact">Contact</h3>
-        <p class="muted">Email: <a href="mailto:lgt@ethiotech.org">lgt@ethiotech.org</a></p>
-        <p class="muted">Showcase your project by emailing us — we can add it here.</p>
+  <main class="main">
+    <div class="card">
+      <h1>Welcome to LGT — Ethiopian Science & Technology</h1>
+      <p>Explore STEM projects, learn about renewable energy, and join our student community.</p>
+      <div style="margin-top:20px;">
+        <a class="btn" href="profile.html">Go to Profile</a>
+        <a class="btn" href="signin.html" style="margin-left:12px">Sign In</a>
       </div>
     </div>
-
-    <footer>
-      &copy; 2025 LGT — Ethiopian Science & Technology. Built by Meklit.
-    </footer>
-  </div>
+  </main>
 </body>
 </html>
-
-
-
-
-
-
