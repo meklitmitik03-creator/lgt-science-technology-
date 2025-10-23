@@ -9,8 +9,8 @@
       margin: 0;
       font-family: Arial, sans-serif;
       display: flex;
-      background-color: #111; /* Dark background */
-      color: gold; /* Text color */
+      background-color: #111;
+      color: gold;
     }
 
     /* Sidebar */
@@ -24,21 +24,34 @@
       position: fixed;
       left: 0;
       top: 0;
+      text-align: center;
     }
 
     .sidebar h2 {
-      color: gold;
-      text-align: center;
       border-bottom: 2px solid gold;
       padding-bottom: 10px;
     }
 
-    /* Main content area */
-    .content {
-      margin-left: 270px;
-      padding: 30px;
-      color: white;
-      flex: 1;
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid gold;
+      margin: 15px auto;
+      object-fit: cover;
+      background-color: #222;
+      display: block;
+    }
+
+    .upload-btn {
+      background-color: gold;
+      color: black;
+      border: none;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .logout-btn {
@@ -50,10 +63,17 @@
       cursor: pointer;
       font-weight: bold;
       margin-top: 20px;
-      display: block;
       width: 100%;
     }
 
+    .content {
+      margin-left: 270px;
+      padding: 30px;
+      color: white;
+      flex: 1;
+    }
+
+    .upload-btn:hover,
     .logout-btn:hover {
       background-color: #ffd700;
     }
@@ -62,6 +82,10 @@
 <body>
   <div class="sidebar">
     <h2>👤 Profile</h2>
+    <img id="profilePic" class="profile-pic" src="" alt="Profile Picture">
+    <input type="file" id="uploadInput" style="display: none;" accept="image/*">
+    <button class="upload-btn" onclick="document.getElementById('uploadInput').click()">Upload Photo</button>
+
     <p><strong>Username:</strong> <span id="usernameDisplay">Loading...</span></p>
     <button class="logout-btn" onclick="logout()">Log Out</button>
   </div>
@@ -72,6 +96,7 @@
   </div>
 
   <script>
+    // Load username
     const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
       document.getElementById("usernameDisplay").textContent = currentUser;
@@ -80,8 +105,32 @@
       window.location.href = "signin.html";
     }
 
+    // Load stored profile picture
+    const savedPic = localStorage.getItem("profilePic");
+    if (savedPic) {
+      document.getElementById("profilePic").src = savedPic;
+    } else {
+      document.getElementById("profilePic").src = "https://via.placeholder.com/120x120/222/FFD700?text=LGT";
+    }
+
+    // Handle new upload
+    document.getElementById("uploadInput").addEventListener("change", function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageData = e.target.result;
+          document.getElementById("profilePic").src = imageData;
+          localStorage.setItem("profilePic", imageData); // save image
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Logout function
     function logout() {
       localStorage.removeItem("currentUser");
+      localStorage.removeItem("profilePic");
       window.location.href = "signin.html";
     }
   </script>
