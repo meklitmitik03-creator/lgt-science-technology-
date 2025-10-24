@@ -4,7 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LGT - Ethiopian Science & Technology</title>
-  <style>
+  <style>/* 🧬 Branches of Science Section */
+.branches {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #0a0a0a;
+}
+
+.branches h2 {
+  color: #f1c40f;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.branch-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.branch-card {
+  background: #111;
+  border: 1px solid #f1c40f;
+  border-radius: 10px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.branch-card:hover {
+  background: #f1c40f;
+  color: #000;
+  transform: translateY(-5px);
+}
+
+.branch-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.branch-card p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.branch-card button {
+  background: #f1c40f;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.branch-card button:hover {
+  background: white;
+}
+
     body {
       margin: 0;
       display: flex;
@@ -106,6 +163,38 @@
     <p>Discover the future of Ethiopian innovation and global discovery.  
     Learn, explore, and share your passion for science and technology.</p>
     <button onclick="window.location.href='science.html'">Explore Science</button>
-  </main>
+  </main><!-- 🌿 Branches of Science Section -->
+<section class="branches">
+  <h2>🌍 Explore the Branches of Science</h2>
+  <div class="branch-container">
+
+    <div class="branch-card">
+      <h3>⚡ Physics</h3>
+      <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
+      <button onclick="window.location.href='science.html'">Learn More</button>
+    </div>
+
+    <div class="branch-card">
+      <h3>⚗️ Chemistry</h3>
+      <p>Explore atoms, molecules, and reactions that create everything around us.</p>
+      <button onclick="window.location.href='science.html'">Learn More</button>
+    </div>
+
+    <div class="branch-card">
+      <h3>🧫 Biology</h3>
+      <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
+      <button onclick="window.location.href='science.html'">Learn More</button>
+    </div>
+
+    <div class="branch-card">
+      <h3>🌋 Earth Science</h3>
+      <p>Understand the land, air, and water systems that make Earth our home.</p>
+      <button onclick="window.location.href='science.html'">Learn More</button>
+    </div>
+
+  </div>
+</section>
+
 </body>
 </html>
+
