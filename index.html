@@ -1,206 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LGT - Ethiopian Science & Technology</title>
-  <style>/* 🧬 Branches of Science Section */
-.branches {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #0a0a0a;
-}
-
-.branches h2 {
-  color: #f1c40f;
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-.branch-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.branch-card {
-  background: #111;
-  border: 1px solid #f1c40f;
-  border-radius: 10px;
-  padding: 20px;
-  transition: 0.3s;
-}
-
-.branch-card:hover {
-  background: #f1c40f;
-  color: #000;
-  transform: translateY(-5px);
-}
-
-.branch-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.branch-card p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.branch-card button {
-  background: #f1c40f;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.branch-card button:hover {
-  background: white;
-}
-
-    body {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LGT Science & Technology</title>
+  <style>
+    * {
       margin: 0;
-      display: flex;
-      height: 100vh;
-      background-color: #0a0a0a;
-      color: #f1c40f;
-      font-family: 'Poppins', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
     }
 
+    body {
+      display: flex;
+      background: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
     .sidebar {
       width: 250px;
       background: #111;
+      height: 100vh;
       padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      left: 0;
+      top: 0;
+      border-right: 2px solid gold;
     }
 
-    .sidebar .logo {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 10px;
+    .sidebar h1 {
+      color: gold;
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-    }
-
-    .nav-links a {
-      color: #f1c40f;
+    .menu a {
+      display: block;
       text-decoration: none;
-      margin: 8px 0;
-      font-weight: 600;
-    }
-
-    .nav-links a:hover {
       color: white;
+      margin: 15px 0;
+      font-size: 18px;
+      transition: 0.3s;
     }
 
-    /* 🌟 Landing Section */
-    .landing {
+    .menu a:hover {
+      color: gold;
+      margin-left: 10px;
+    }
+
+    .bottom-links a {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+
+    .bottom-links a:hover {
+      color: gold;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 270px;
       flex: 1;
-      background: linear-gradient(135deg, #000, #1a1a1a);
+    }
+
+    /* Landing Section */
+    .landing {
+      background: url('https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 50px;
-      color: #f1c40f;
+      padding: 40px;
+      color: white;
+      position: relative;
     }
 
-    .landing h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+    .landing::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .landing h2, .landing p, .landing button {
+      position: relative;
+      z-index: 1;
+    }
+
+    .landing h2 {
+      font-size: 40px;
+      color: gold;
+      margin-bottom: 15px;
     }
 
     .landing p {
-      font-size: 1.2rem;
+      color: #ddd;
+      font-size: 18px;
+      margin-bottom: 30px;
       max-width: 600px;
-      line-height: 1.6;
     }
 
     .landing button {
-      margin-top: 30px;
-      background: #f1c40f;
+      background: gold;
       color: black;
-      padding: 12px 30px;
+      padding: 12px 25px;
       border: none;
-      font-size: 1rem;
-      border-radius: 8px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
 
     .landing button:hover {
-      background: white;
-      color: black;
+      background: #d4af37;
+      transform: scale(1.05);
+    }
+
+    /* Cards */
+    .card-section {
+      padding: 60px 30px;
+      text-align: center;
+      background: #0a0a0a;
+    }
+
+    .card-section h2 {
+      color: gold;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 2px solid gold;
+      border-radius: 20px;
+      width: 300px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 0 10px gold;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ddd;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    iframe {
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <aside class="sidebar">
-    <img src="logo.png" class="logo" onerror="this.style.display='none'">
-    <h1>LGT</h1>
-    <nav class="nav-links">
-      <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="physics.html">Physics</a></li>
-  <li><a href="chemistry.html">Chemistry</a></li>
-  <li><a href="biology.html">Biology</a></li>
-  <li><a href="#">Technology</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Sign In</a></li>
-</ul>
-    </nav>
-  </aside>
-
-  <main class="landing">
-    <h1>Welcome to LGT Science & Technology</h1>
-    <p>Discover the future of Ethiopian innovation and global discovery.  
-    Learn, explore, and share your passion for science and technology.</p>
-    <button onclick="location.href='physics.html'">Learn More</button>
-  </main><!-- 🌿 Branches of Science Section -->
-<section class="branches">
-  <h2>🌍 Explore the Branches of Science</h2>
-  <div class="branch-container">
-
-    <div class="branch-card">
-      <h3>⚡ Physics</h3>
-      <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
-      <button onclick="location.href='physics.html'">Explore Science</button>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div>
+      <h1>LGT Science</h1>
+      <div class="menu">
+        <a href="#">🏠 Home</a>
+        <a href="#science">🔬 Science</a>
+        <a href="#">📚 Resources</a>
+        <a href="#">📞 Contact</a>
+        <a href="#">ℹ️ About</a>
+      </div>
     </div>
-
-    <div class="branch-card">
-      <h3>⚗️ Chemistry</h3>
-      <p>Explore atoms, molecules, and reactions that create everything around us.</p>
-      <button onclick="window.location.href='science.html'">Learn More</button>
+    <div class="bottom-links">
+      <a href="#">👤 Profile</a> |
+      <a href="#">🔐 Sign In</a>
     </div>
-
-    <div class="branch-card">
-      <h3>🧫 Biology</h3>
-      <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
-      <button onclick="window.location.href='science.html'">Learn More</button>
-    </div>
-
-    <div class="branch-card">
-      <h3>🌋 Earth Science</h3>
-      <p>Understand the land, air, and water systems that make Earth our home.</p>
-      <button onclick="window.location.href='science.html'">Learn More</button>
-    </div>
-
   </div>
-</section>
 
+  <!-- Main content -->
+  <div class="main-content">
+    <div class="landing">
+      <h2>Welcome to LGT Science & Technology</h2>
+      <p>Discover the beauty of science through exploration, innovation, and creativity — all in one place.</p>
+      <button onclick="document.getElementById('science').scrollIntoView({behavior: 'smooth'});">Explore Science</button>
+    </div>
+
+    <section class="card-section" id="science">
+      <h2>Branches of Science</h2>
+      <div class="card-container">
+
+        <!-- Physics Card -->
+        <div class="card">
+          <h3>⚡ Physics</h3>
+          <p>Learn about motion, energy, and the universe’s forces through experiments and discoveries.</p>
+          <iframe width="260" height="160" src="https://www.youtube.com/embed/nwHS1j2-5nE" allowfullscreen></iframe>
+          <p><a href="https://www.khanacademy.org/science/physics" target="_blank">📚 Learn More</a></p>
+        </div>
+
+        <!-- Chemistry Card -->
+        <div class="card">
+          <h3>🧪 Chemistry</h3>
+          <p>Explore matter, atoms, and reactions — understanding what everything is made of.</p>
+          <iframe width="260" height="160" src="https://www.youtube.com/embed/FSyAehMdpyI" allowfullscreen></iframe>
+          <p><a href="https://openstax.org/books/chemistry-2e/pages/1-introduction" target="_blank">📚 Learn More</a></p>
+        </div>
+
+        <!-- Biology Card -->
+        <div class="card">
+          <h3>🌿 Biology</h3>
+          <p>Discover the science of life — how organisms grow, adapt, and sustain ecosystems.</p>
+          <iframe width="260" height="160" src="https://www.youtube.com/embed/w0xWBc3r2Mk" allowfullscreen></iframe>
+          <p><a href="https://openstax.org/books/biology-2e/pages/1-introduction" target="_blank">📚 Learn More</a></p>
+        </div>
+
+      </div>
+    </section>
+  </div>
 </body>
 </html>
+
 
 
 
