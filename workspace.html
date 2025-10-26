@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Work Space - LGT Science & Technology</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: black;
+      color: gold;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      background: gold;
+      color: black;
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid gold;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: gold;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #ffdf00;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid gold;
+      background: black;
+      color: gold;
+      font-size: 1em;
+      resize: vertical;
+    }
+
+    button {
+      display: inline-block;
+      margin-top: 20px;
+      background: gold;
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffcc00;
+      transform: scale(1.05);
+    }
+
+    .proposal-output {
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid gold;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    .saved-ideas {
+      margin-top: 40px;
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid gold;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .saved-ideas h3 {
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .idea-item {
+      background: rgba(255, 215, 0, 0.08);
+      border: 1px solid gold;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      background: gold;
+      color: black;
+      padding: 15px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>My Work Space</header>
+
+  <div class="container">
+    <h2>💡 Turn Your Ideas Into Proposals</h2>
+    <p style="text-align:center; color:#ddd;">Innovation starts with an idea — write yours below.</p>
+
+    <form id="ideaForm">
+      <label>Project Title:</label>
+      <input type="text" id="title" required>
+
+      <label>Objective / Problem:</label>
+      <textarea id="objective" rows="3" required></textarea>
+
+      <label>Method / Plan:</label>
+      <textarea id="method" rows="3" required></textarea>
+
+      <label>Expected Result:</label>
+      <textarea id="result" rows="3" required></textarea>
+
+      <button type="button" id="generateBtn">Generate Proposal</button>
+      <button type="button" id="saveBtn">Register My Idea</button>
+    </form>
+
+    <div class="proposal-output" id="proposalOutput">
+      <h3>📜 Generated Proposal</h3>
+      <p id="proposalText"></p>
+    </div>
+
+    <div class="saved-ideas" id="savedIdeas">
+      <h3>💾 Registered Ideas</h3>
+      <div id="ideasList"></div>
+    </div>
+  </div>
+
+  <footer>© 2025 LGT Science & Technology</footer>
+
+  <script>
+    const generateBtn = document.getElementById("generateBtn");
+    const saveBtn = document.getElementById("saveBtn");
+    const proposalOutput = document.getElementById("proposalOutput");
+    const proposalText = document.getElementById("proposalText");
+    const ideasList = document.getElementById("ideasList");
+
+    // Generate Proposal
+    generateBtn.addEventListener("click", () => {
+      const title = document.getElementById("title").value;
+      const objective = document.getElementById("objective").value;
+      const method = document.getElementById("method").value;
+      const result = document.getElementById("result").value;
+
+      if (title && objective && method && result) {
+        const proposal = `
+          <strong>Proposal Title:</strong> ${title}<br>
+          <strong>Objective:</strong> ${objective}<br>
+          <strong>Method:</strong> ${method}<br>
+          <strong>Expected Result:</strong> ${result}
+        `;
+        proposalText.innerHTML = proposal;
+        proposalOutput.style.display = "block";
+      } else {
+        alert("Please fill in all fields to generate your proposal.");
+      }
+    });
+
+    // Save Idea (register)
+    saveBtn.addEventListener("click", () => {
+      const title = document.getElementById("title").value;
+      const objective = document.getElementById("objective").value;
+      const method = document.getElementById("method").value;
+      const result = document.getElementById("result").value;
+
+      if (title && objective && method && result) {
+        const idea = { title, objective, method, result };
+        let savedIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
+        savedIdeas.push(idea);
+        localStorage.setItem("ideas", JSON.stringify(savedIdeas));
+        alert("✅ Idea Registered Successfully!");
+        showSavedIdeas();
+      } else {
+        alert("Please fill in all fields to register your idea.");
+      }
+    });
+
+    // Show Saved Ideas
+    function showSavedIdeas() {
+      const savedIdeas = JSON.parse(localStorage.getItem("ideas")) || [];
+      ideasList.innerHTML = "";
+      savedIdeas.forEach((idea, index) => {
+        const div = document.createElement("div");
+        div.className = "idea-item";
+        div.innerHTML = `
+          <strong>${idea.title}</strong><br>
+          ${idea.objective}<br>
+          <em>${idea.method}</em><br>
+          <small>${idea.result}</small>
+        `;
+        ideasList.appendChild(div);
+      });
+    }
+
+    showSavedIdeas();
+  </script>
+</body>
+</html>
