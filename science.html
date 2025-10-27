@@ -1,55 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Science - LGT</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LGT | Science</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 🌍 Science Page Styling */
+    .science-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .science-section h2 {
+      color: #f1c40f;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+
+    .science-section p {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+
+    .science-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .science-gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .science-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .video-section {
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .video-section video {
+      width: 90%;
+      max-width: 800px;
+      border-radius: 12px;
+      border: 2px solid #f1c40f;
+    }
+
+    .science-branches {
+      margin-top: 70px;
+    }
+
+    .branch-card {
+      background: #111;
+      border: 1px solid #f1c40f;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .branch-card:hover {
+      background: #f1c40f;
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .branch-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 50px auto;
+    }
+
+    .branch-card button {
+      background: #f1c40f;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .branch-card button:hover {
+      background: white;
+    }
+  </style>
 </head>
-  <script>
-  const sidebar = document.getElementById('sidebar');
-  const menuButton = document.querySelector('.menu-toggle');
 
-  function toggleMenu() {
-    sidebar.classList.toggle('active');
-  }
-
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove('active');
-      }
-    });
-  });
-</script>
 <body>
-  <aside class="sidebar">
+  <!-- 🍔 Toggle Button -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- 🧭 Sidebar -->
+  <aside class="sidebar" id="sidebar">
     <img src="logo.png" class="logo" onerror="this.style.display='none'">
     <h1>LGT</h1>
     <nav class="nav-links">
       <a href="index.html">🏠 Home</a>
       <a href="science.html">🔬 Science</a>
       <a href="technology.html">🧠 Technology</a>
+      <a href="workspace.html">🧾 My Work Space</a>
       <a href="profile.html">👤 Profile</a>
-      <a href="signin.html">🔑 Sign Out</a>
+      <a href="signin.html">🔑 Sign In</a>
     </nav>
   </aside>
 
-  <main class="main">
-    <div class="card">
-      <h1>Explore Science</h1>
-      <p>Discover amazing facts, projects, and experiments in Physics, Chemistry, Biology, and Earth Science. LGT brings science to life through Ethiopian innovation and global knowledge.</p>
+  <!-- 🌌 Main Content -->
+  <main class="main-content">
+    <section class="science-section">
+      <h2>🔬 Explore the World of Science</h2>
+      <p>
+        Science is the key to understanding the universe — from the smallest atom 
+        to the largest galaxy. Here, you’ll explore natural and social sciences, 
+        learn through visuals, and dive deep into how science shapes our everyday life.
+      </p>
 
-      <h2>🌍 Featured Topics</h2>
-      <ul>
-        <li>The power of renewable energy in Ethiopia</li>
-        <li>How chemistry helps in agriculture</li>
-        <li>Discovering microbes that clean our environment</li>
-      </ul>
+      <div class="science-gallery">
+        <img src="science1.jpg" alt="Microscope" />
+        <img src="science2.jpg" alt="Laboratory" />
+        <img src="science3.jpg" alt="Earth and Space" />
+      </div>
+    </section>
 
-      <p style="margin-top:15px">More science articles and videos coming soon!</p>
-    </div>
+    <!-- 🎥 Video Section -->
+    <section class="video-section">
+      <h2>🎬 Watch: The Power of Science</h2>
+      <video controls poster="science-video-poster.jpg">
+        <source src="science-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <!-- 🌱 Science Branches -->
+    <section class="science-branches">
+      <h2>🧠 Major Branches of Science</h2>
+      <div class="branch-container">
+
+        <div class="branch-card">
+          <h3>⚡ Physics</h3>
+          <p>Study energy, motion, and the fundamental forces that control the universe.</p>
+          <button onclick="location.href='physics.html'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>⚗️ Chemistry</h3>
+          <p>Explore matter, its properties, and how substances react to form new materials.</p>
+          <button onclick="location.href='chemistry.html'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>🧬 Biology</h3>
+          <p>Understand living organisms, genetics, and ecosystems that sustain life.</p>
+          <button onclick="location.href='biology.html'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>🌍 Earth Science</h3>
+          <p>Learn about rocks, oceans, the atmosphere, and the planet we call home.</p>
+          <button onclick="location.href='earth.html'">Learn More</button>
+        </div>
+
+      </div>
+    </section>
   </main>
+
+  <!-- ⚙️ Sidebar Script -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const menuButton = document.querySelector('.menu-toggle');
+
+    function toggleMenu() {
+      sidebar.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
