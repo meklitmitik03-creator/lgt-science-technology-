@@ -189,20 +189,6 @@
     .branch-card button:hover {
       background: white;
     }
-
-    /* Responsive (for phone) */
-    @media (max-width: 768px) {
-      .sidebar {
-        transform: translateX(-100%);
-      }
-      .sidebar.active {
-        transform: translateX(0);
-      }
-      .main-content {
-        margin-left: 0;
-        width: 100%;
-      }
-    }
   </style>
 </head>
 <body>
@@ -227,7 +213,7 @@
   <div class="main-content">
     <section class="landing">
       <h1>Welcome to LGT Science & Technology</h1>
-      <p>Discover the future of Ethiopian innovation and global discovery.<br>
+      <p>Discover the future of Ethiopian innovation and global discovery.  
       Learn, explore, and share your passion for science and technology — create your own world.</p>
       <button onclick="window.location.href='landing.html'">Explore Science</button>
     </section>
@@ -262,23 +248,11 @@
     </section>
   </div>
 
-  <!-- JS for Menu -->
   <script>
-    const sidebar = document.getElementById('sidebar');
-    const menuButton = document.querySelector('.menu-toggle');
-
     function toggleMenu() {
-      sidebar.classList.toggle('active');
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
     }
-
-    // Close menu automatically when a link is clicked (on mobile)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-          sidebar.classList.remove('active');
-        }
-      });
-    });
   </script>
 </body>
 </html>
