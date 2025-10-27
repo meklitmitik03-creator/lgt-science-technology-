@@ -7,6 +7,22 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+  <script>
+  const sidebar = document.getElementById('sidebar');
+  const menuButton = document.querySelector('.menu-toggle');
+
+  function toggleMenu() {
+    sidebar.classList.toggle('active');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove('active');
+      }
+    });
+  });
+</script>
 <body>
   <aside class="sidebar">
     <img src="logo.png" class="logo" onerror="this.style.display='none'">
