@@ -11,7 +11,22 @@
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
     }
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const menuButton = document.querySelector('.menu-toggle');
 
+  function toggleMenu() {
+    sidebar.classList.toggle('active');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove('active');
+      }
+    });
+  });
+</script>
     body {
       background: black;
       color: gold;
