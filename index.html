@@ -1,76 +1,19 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LGT - Ethiopian Science & Technology</title>
-  <style>/* 🧬 Branches of Science Section */
-.branches {
-  text-align: center;
-  padding: 60px 20px;
-  background-color: #0a0a0a;
-}
-
-.branches h2 {
-  color: #f1c40f;
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-.branch-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: auto;
-}
-
-.branch-card {
-  background: #111;
-  border: 1px solid #f1c40f;
-  border-radius: 10px;
-  padding: 20px;
-  transition: 0.3s;
-}
-
-.branch-card:hover {
-  background: #f1c40f;
-  color: #000;
-  transform: translateY(-5px);
-}
-
-.branch-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.branch-card p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-}
-
-.branch-card button {
-  background: #f1c40f;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.branch-card button:hover {
-  background: white;
-}
-    
+  <style>
     body {
       margin: 0;
       display: flex;
-      height: 100vh;
       background-color: #0a0a0a;
       color: #f1c40f;
       font-family: 'Poppins', sans-serif;
     }
 
+    /* Sidebar */
     .sidebar {
       width: 250px;
       background: #111;
@@ -78,12 +21,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      left: 0;
     }
 
     .sidebar .logo {
       width: 80px;
       height: 80px;
       margin-bottom: 10px;
+    }
+
+    .sidebar h1 {
+      margin-bottom: 20px;
     }
 
     .nav-links {
@@ -103,17 +54,22 @@
       color: white;
     }
 
-    /* 🌟 Landing Section */
-    .landing {
-      flex: 1;
-      background: linear-gradient(135deg, #000, #1a1a1a);
+    /* Main content area */
+    .main-content {
+      margin-left: 250px;
+      width: calc(100% - 250px);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+    }
+
+    /* 🌟 Landing Section */
+    .landing {
+      background: linear-gradient(135deg, #000, #1a1a1a);
       text-align: center;
-      padding: 50px;
+      padding: 100px 40px;
       color: #f1c40f;
+      width: 100%;
     }
 
     .landing h1 {
@@ -124,6 +80,7 @@
     .landing p {
       font-size: 1.2rem;
       max-width: 600px;
+      margin: auto;
       line-height: 1.6;
     }
 
@@ -143,6 +100,65 @@
       background: white;
       color: black;
     }
+
+    /* 🧬 Branches of Science Section */
+    .branches {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #0a0a0a;
+      width: 100%;
+    }
+
+    .branches h2 {
+      color: #f1c40f;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .branch-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .branch-card {
+      background: #111;
+      border: 1px solid #f1c40f;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .branch-card:hover {
+      background: #f1c40f;
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .branch-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .branch-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .branch-card button {
+      background: #f1c40f;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .branch-card button:hover {
+      background: white;
+    }
   </style>
 </head>
 <body>
@@ -159,49 +175,45 @@
     </nav>
   </aside>
 
-  <main class="landing">
-    <h1>Welcome to LGT Science & Technology</h1>
-    <p>Discover the future of Ethiopian innovation and global discovery.  
-    Learn, explore, and share your passion for science and technology create your own world.</p>
-    <button onclick="window.location.href='landing.html'">explore science</button>
-  </main><!-- 🌿 Branches of Science Section -->
-<section class="branches">
-  <h2>🌍 Explore the Branches of Science</h2>
-  <div class="branch-container">
+  <div class="main-content">
+    <section class="landing">
+      <h1>Welcome to LGT Science & Technology</h1>
+      <p>Discover the future of Ethiopian innovation and global discovery.  
+      Learn, explore, and share your passion for science and technology — create your own world.</p>
+      <button onclick="window.location.href='landing.html'">Explore Science</button>
+    </section>
 
-    <div class="branch-card">
-      <h3>⚡ Physics</h3>
-      <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
-      <button onclick="location.href='physics.html'">Learn More</button>
-    </div>
+    <!-- 🌿 Branches of Science Section -->
+    <section class="branches">
+      <h2>🌍 Explore the Branches of Science</h2>
+      <div class="branch-container">
 
-    <div class="branch-card">
-      <h3>⚗️ Chemistry</h3>
-      <p>Explore atoms, molecules, and reactions that create everything around us.</p>
-      <button onclick="window.location.href='chemistry.html'">Learn More</button>
-    </div>
+        <div class="branch-card">
+          <h3>⚡ Physics</h3>
+          <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
+          <button onclick="location.href='physics.html'">Learn More</button>
+        </div>
 
-    <div class="branch-card">
-      <h3>🧫 Biology</h3>
-      <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
-      <button onclick="window.location.href='biology.html'">Learn More</button>
-    </div>
+        <div class="branch-card">
+          <h3>⚗️ Chemistry</h3>
+          <p>Explore atoms, molecules, and reactions that create everything around us.</p>
+          <button onclick="window.location.href='chemistry.html'">Learn More</button>
+        </div>
 
-    <div class="branch-card">
-      <h3>🌋 Earth Science</h3>
-      <p>Understand the land, air, and water systems that make Earth our home.</p>
-      <button onclick="window.location.href='science.html'">Learn More</button>
-    </div>
+        <div class="branch-card">
+          <h3>🧫 Biology</h3>
+          <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
+          <button onclick="window.location.href='biology.html'">Learn More</button>
+        </div>
 
+        <div class="branch-card">
+          <h3>🌋 Earth Science</h3>
+          <p>Understand the land, air, and water systems that make Earth our home.</p>
+          <button onclick="window.location.href='science.html'">Learn More</button>
+        </div>
+
+      </div>
+    </section>
   </div>
-</section>
-
 </body>
 </html>
-
-
-
-
-
-
-
