@@ -16,7 +16,7 @@
 
     /* Sidebar (same as home & science) */
     .sidebar {
-      width: 250px;
+      width: 150px;
       background: #111;
       padding: 20px;
       display: flex;
@@ -25,8 +25,8 @@
     }
 
     .sidebar .logo {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
       margin-bottom: 10px;
     }
 
@@ -129,16 +129,18 @@
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <img src="logo.png" alt="LGT Logo" class="logo" />
-    <h1>LGT Science & Tech</h1>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="science.html">Science</a>
-      <a href="technology.html">Technology</a>
-      <a href="myworkspace.html">My Work Space</a>
-    </div>
-  </div>
+   <aside class="sidebar">
+    <img src="logo.png" class="logo" onerror="this.style.display='none'">
+    <h1>LGT</h1>
+    <nav class="nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="science.html">🔬 Science</a>
+      <a href="technology.html">🧠 Technology</a>
+      <a href="workspace.html">💡 My Work Space</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="signin.html">🔑 Sign In</a>
+    </nav>
+  </aside>
 
   <div class="main-content">
     <h2>Explore the World of Technology</h2>
