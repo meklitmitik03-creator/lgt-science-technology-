@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LGT | Technology</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      background-color: #0a0a0a;
+      color: #f1c40f;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* Sidebar (same as home & science) */
+    .sidebar {
+      width: 250px;
+      background: #111;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar .logo {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .nav-links a {
+      color: #f1c40f;
+      text-decoration: none;
+      margin: 10px 0;
+      font-weight: 600;
+      transition: 0.3s;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .nav-links a:hover {
+      background: #f1c40f;
+      color: #111;
+    }
+
+    /* Main content */
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    .main-content h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #f1c40f;
+      border-bottom: 2px solid #f1c40f;
+      padding-bottom: 10px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Cards layout */
+    .tech-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #f1c40f33;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px #f1c40f33;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #f1c40f;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ddd;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #f1c40f;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="logo.png" alt="LGT Logo" class="logo" />
+    <h1>LGT Science & Tech</h1>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="science.html">Science</a>
+      <a href="technology.html">Technology</a>
+      <a href="myworkspace.html">My Work Space</a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <h2>Explore the World of Technology</h2>
+    <div class="tech-cards">
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2017/08/06/01/34/technology-2589460_960_720.jpg" alt="Information Technology">
+        <h3>Information Technology (IT)</h3>
+        <p>IT powers communication and connection across the globe — from software, apps, and the internet to data management and cybersecurity.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/02/16/15/32/biotechnology-4858430_960_720.jpg" alt="Biotechnology">
+        <h3>Biotechnology</h3>
+        <p>Combines biology and technology to improve health, agriculture, and the environment — including genetic engineering and medicine development.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2018/02/17/09/15/nanotechnology-3158450_960_720.jpg" alt="Nanotechnology">
+        <h3>Nanotechnology</h3>
+        <p>Works at the atomic and molecular level to create materials and devices with revolutionary medical and industrial applications.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2018/01/09/07/28/robot-3075392_960_720.jpg" alt="Robotics">
+        <h3>Robotics</h3>
+        <p>Designs intelligent machines capable of performing complex tasks — from factory robots to advanced humanoid helpers.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2020/05/07/05/23/artificial-intelligence-5136664_960_720.jpg" alt="Artificial Intelligence">
+        <h3>Artificial Intelligence (AI)</h3>
+        <p>Gives machines the ability to learn, reason, and make decisions — driving innovations in healthcare, business, and education.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2018/01/17/07/15/solar-panels-3086888_960_720.jpg" alt="Green Technology">
+        <h3>Green Technology</h3>
+        <p>Focuses on eco-friendly solutions like renewable energy, electric cars, and sustainable materials to protect our planet.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2016/02/23/22/28/space-1219131_960_720.jpg" alt="Space Technology">
+        <h3>Space Technology</h3>
+        <p>Explores the universe with rockets, satellites, and telescopes — advancing human knowledge and global communication.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
