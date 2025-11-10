@@ -34,15 +34,25 @@
       transform: translateX(-100%);
     }
 
-    .logo {
+    .sidebar .logo {
       width: 85px;
       height: 85px;
       margin-bottom: 8px;
     }
 
+    .sidebar h1 {
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
     .nav-links a {
       color: #f1c40f;
-      text-decoration: none;
+      text-decoration:text-decoration-style: wavy; 
       margin: 8px 0;
       font-weight: 600;
       transition: 0.3s;
@@ -67,6 +77,10 @@
       z-index: 200;
     }
 
+    .menu-toggle:hover {
+      background: white;
+    }
+
     /* Main content */
     .main-content {
       margin-left: 250px;
@@ -79,126 +93,166 @@
       width: 100%;
     }
 
+    /* 🌟 Landing Section */
     .landing {
+      background: linear-gradient(135deg, #000, #1a1a1a);
       text-align: center;
       padding: 100px 40px;
+      color: #f1c40f;
+      width: 100%;
     }
 
-    /* 🌟 MERRY AI ASSISTANT */
-    #merry-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
+    .landing h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .landing p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .landing button {
+      margin-top: 30px;
+      background: #f1c40f;
+      color: black;
+      padding: 12px 30px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .landing button:hover {
+      background: white;
+      color: black;
+    }
+
+    /* 🧬 Branches of Science Section */
+    .branches {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #0a0a0a;
+      width: 100%;
+    }
+
+    .branches h2 {
+      color: #f1c40f;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .branch-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .branch-card {
+      background: #111;
+      border: 1px solid #f1c40f;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+    }
+
+    .branch-card:hover {
       background: #f1c40f;
       color: #000;
+      transform: translateY(-5px);
+    }
+
+    .branch-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .branch-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .branch-card button {
+      background: #f1c40f;
+      color: black;
       border: none;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      font-size: 1.8rem;
+      padding: 10px 20px;
+      border-radius: 5px;
       cursor: pointer;
-      box-shadow: 0 0 10px #f1c40f;
-      z-index: 300;
     }
 
-    #merry-box {
-      position: fixed;
-      bottom: 90px;
-      right: 25px;
-      width: 260px;
-      background: #111;
-      border: 2px solid #f1c40f;
-      border-radius: 10px;
-      padding: 10px;
-      display: none;
-      z-index: 300;
-    }
-
-    #merry-box h3 {
-      margin-top: 0;
-      color: #f1c40f;
-    }
-
-    #merry-chat {
-      height: 180px;
-      overflow-y: auto;
-      background: #000;
-      padding: 6px;
-      border-radius: 6px;
-      margin-bottom: 8px;
-      color: white;
-      font-size: .9rem;
-    }
-
-    #merry-input {
-      width: 100%;
-      padding: 6px;
-      border-radius: 6px;
-      border: none;
-      outline: none;
+    .branch-card button:hover {
+      background: white;
     }
   </style>
 </head>
 <body>
+  <!-- Toggle Menu Button -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <img src="logo.png" class="logo" onerror="this.style.display='none'">
+    <h1>LGT</h1>
+    <nav class="nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="science.html">🔬 Science</a>
+      <a href="technology.html">🧠 Technology</a>
+      <a href="workspace.html">🧾 My Work Space</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="signin.html">🔑 Sign In</a>
+    </nav>
+  </aside>
 
-<aside class="sidebar" id="sidebar">
-  <img src="logo.png" class="logo">
-  <h1>LGT</h1>
+  <!-- Main Content -->
+  <div class="main-content">
+    <section class="landing">
+      <h1>Welcome to LGT Science & Technology</h1>
+      <p>Discover the future of Ethiopian innovation and global discovery.  
+      Learn, explore, and share your passion for science and technology — create your own world.</p>
+      <button onclick="window.location.href='landing.html'">Explore Science</button>
+    </section>
 
-  <nav class="nav-links">
-    <a href="index.html">🏠 Home</a>
-    <a href="science.html">🔬 Science</a>
-    <a href="technology.html">🧠 Technology</a>
-    <a href="workspace.html">🧾 My Work Space</a>
-    <a href="profile.html">👤 Profile</a>
-    <a href="signin.html">🔑 Sign In</a>
-  </nav>
-</aside>
+    <section class="branches">
+      <h2>🌍 Explore the Branches of Science</h2>
+      <div class="branch-container">
+        <div class="branch-card">
+          <h3>⚡ Physics</h3>
+          <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
+          <button onclick="location.href='physics.html'">Learn More</button>
+        </div>
 
-<div class="main-content">
-  <section class="landing">
-    <h1>Welcome to LGT Science & Technology</h1>
-    <p>Discover the future of Ethiopian innovation...</p>
-  </section>
-</div>
+        <div class="branch-card">
+          <h3>⚗️ Chemistry</h3>
+          <p>Explore atoms, molecules, and reactions that create everything around us.</p>
+          <button onclick="window.location.href='chemistry.html'">Learn More</button>
+        </div>
 
-<!-- ✅ Merry Assistant UI -->
-<button id="merry-btn" onclick="toggleMerry()">💬</button>
+        <div class="branch-card">
+          <h3>🧫 Biology</h3>
+          <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
+          <button onclick="window.location.href='biology.html'">Learn More</button>
+        </div>
 
-<div id="merry-box">
-  <h3>🤖 Merry AI</h3>
-  <div id="merry-chat"></div>
-  <input id="merry-input" placeholder="Ask something..." onkeypress="if(event.key==='Enter') sendMerry()">
-</div>
+        <div class="branch-card">
+          <h3>🌋 Earth Science</h3>
+          <p>Understand the land, air, and water systems that make Earth our home.</p>
+          <button onclick="window.location.href='science.html'">Learn More</button>
+        </div>
+      </div>
+    </section>
+  </div>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("hidden");
-  }
-
-  function toggleMerry() {
-    const box = document.getElementById("merry-box");
-    box.style.display = box.style.display === "none" ? "block" : "none";
-  }
-
-  function sendMerry() {
-    let input = document.getElementById("merry-input");
-    let chat = document.getElementById("merry-chat");
-
-    let userText = input.value.trim();
-    if (userText === "") return;
-
-    chat.innerHTML += "<p><b>You:</b> " + userText + "</p>";
-
-    let reply = "Hello! I'm Merry 😊 How can I help you learn today?";
-
-    chat.innerHTML += "<p><b>Merry:</b> " + reply + "</p>";
-    chat.scrollTop = chat.scrollHeight;
-    input.value = "";
-  }
-</script>
-
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
+    }
+  </script>
 </body>
 </html>
