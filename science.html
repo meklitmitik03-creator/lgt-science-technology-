@@ -90,4 +90,156 @@
     }
 
     .sidebar.hidden ~ .main-content {
-      margin-
+      margin-left: 0;
+      width: 100%;
+    }
+
+    /* Branch Section */
+    .branches {
+      text-align: center;
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    .branches h2 {
+      color: #f1c40f;
+      font-size: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .branch-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .branch-card {
+      background: #111;
+      border: 1px solid #f1c40f;
+      border-radius: 10px;
+      padding: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .branch-card:hover {
+      background: #f1c40f;
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .branch-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .branch-card p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .branch-card button {
+      background: #f1c40f;
+      color: black;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .branch-card button:hover {
+      background: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Toggle Menu Button -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <img src="logo.png" class="logo" onerror="this.style.display='none'">
+    <h1>LGT</h1>
+    <nav class="nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="science.html">🔬 Science</a>
+      <a href="guidance.html">🎓 Guidance</a>
+      <a href="technology.html">🧠 Technology</a>
+      <a href="workspace.html">🧾 My Work Space</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="signin.html">🔑 Sign In</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <section class="branches">
+      <h2>🌍 Branches of Science</h2>
+
+      <h3>Natural Science</h3>
+      <div class="branch-container">
+        <div class="branch-card">
+          <h3>Biology</h3>
+          <p>Study living things from cells to ecosystems.</p>
+          <button onclick="window.location.href='guidance.html?stream=natural&branch=Biology'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Chemistry</h3>
+          <p>Explore chemicals, reactions, and materials.</p>
+          <button onclick="window.location.href='guidance.html?stream=natural&branch=Chemistry'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Physics</h3>
+          <p>Understand forces, energy, and the universe.</p>
+          <button onclick="window.location.href='guidance.html?stream=natural&branch=Physics'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Mathematics</h3>
+          <p>Work with numbers, patterns, and models.</p>
+          <button onclick="window.location.href='guidance.html?stream=natural&branch=Mathematics'">Learn More</button>
+        </div>
+      </div>
+
+      <h3 style="margin-top:40px;">Social Science</h3>
+      <div class="branch-container">
+        <div class="branch-card">
+          <h3>History</h3>
+          <p>Study past events and civilizations.</p>
+          <button onclick="window.location.href='guidance.html?stream=social&branch=History'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Economics</h3>
+          <p>Analyze economy, markets, and resources.</p>
+          <button onclick="window.location.href='guidance.html?stream=social&branch=Economics'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Sociology</h3>
+          <p>Understand human behavior and society.</p>
+          <button onclick="window.location.href='guidance.html?stream=social&branch=Sociology'">Learn More</button>
+        </div>
+
+        <div class="branch-card">
+          <h3>Political Science</h3>
+          <p>Study government, policies, and politics.</p>
+          <button onclick="window.location.href='guidance.html?stream=social&branch=Political Science'">Learn More</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
