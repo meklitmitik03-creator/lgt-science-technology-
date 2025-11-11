@@ -94,18 +94,17 @@
       width: 100%;
     }
 
-    /* Branch Section */
+    /* Guidance Section */
     .branches {
       text-align: center;
-      padding: 60px 20px;
-      background-color: #0a0a0a;
+      padding: 40px 20px;
       width: 100%;
     }
 
     .branches h2 {
       color: #f1c40f;
       font-size: 2rem;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .branch-container {
@@ -120,9 +119,10 @@
       background: #111;
       border: 1px solid #f1c40f;
       border-radius: 10px;
-      padding: 20px;
+      padding: 15px;
       transition: 0.3s;
       cursor: pointer;
+      text-align: left;
     }
 
     .branch-card:hover {
@@ -132,36 +132,32 @@
     }
 
     .branch-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
     }
 
     .branch-card p {
-      font-size: 1rem;
-      margin-bottom: 15px;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
     }
 
-    .branch-card img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
+    .branch-card ul {
+      margin-left: 20px;
     }
 
-    select {
-      padding: 8px;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      background: #111;
-      color: #f1c40f;
-      border: 1px solid #f1c40f;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border-radius: 10px;
-      margin-top: 15px;
+    button.stream-btn {
+      background: #f1c40f;
+      color: black;
       border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button.stream-btn:hover {
+      background: white;
     }
   </style>
 </head>
@@ -176,6 +172,7 @@
     <nav class="nav-links">
       <a href="index.html">🏠 Home</a>
       <a href="science.html">🔬 Science</a>
+      <a href="guidance.html">🎓 Guidance</a>
       <a href="technology.html">🧠 Technology</a>
       <a href="workspace.html">🧾 My Work Space</a>
       <a href="profile.html">👤 Profile</a>
@@ -186,90 +183,53 @@
   <!-- Main Content -->
   <div class="main-content">
     <section class="branches">
-      <h2>🎓 Student Guidance Portal</h2>
-      <div class="branch-container">
-        <div class="branch-card" onclick="showInfo('natural')">
-          <h3>Natural Science</h3>
-          <p>Biology, Chemistry, Physics, Math</p>
-        </div>
+      <h2>🎓 Student Guidance</h2>
+      <button class="stream-btn" onclick="showStream('natural')">Natural Science</button>
+      <button class="stream-btn" onclick="showStream('social')">Social Science</button>
 
-        <div class="branch-card" onclick="showInfo('social')">
-          <h3>Social Science</h3>
-          <p>History, Economics, Sociology, Political Science</p>
-        </div>
-      </div>
-
-      <div id="result" style="margin-top:40px;"></div>
+      <div id="branch-area" style="margin-top:30px;"></div>
     </section>
   </div>
 
   <script>
-    const infoData = {
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+
+    const streams = {
       natural: {
-        description: "Natural Science students focus on understanding the natural world, including living organisms, chemistry, physics, and mathematics.",
-        universities: ["Addis Ababa University", "Jimma University", "Bahir Dar University", "Haramaya University"],
+        description: "Natural Science students focus on the natural world, including Biology, Chemistry, Physics, and Math.",
         branches: [
-          {name:"Biology", img:"https://images.unsplash.com/photo-1581091215366-2f243091b899?auto=format&fit=crop&w=300&q=80"},
-          {name:"Chemistry", img:"https://images.unsplash.com/photo-1581091870620-0ec3a0a2b015?auto=format&fit=crop&w=300&q=80"},
-          {name:"Physics", img:"https://images.unsplash.com/photo-1581090700229-7a60cb2f3f3f?auto=format&fit=crop&w=300&q=80"},
-          {name:"Mathematics", img:"https://images.unsplash.com/photo-1601933471061-b6dbd4c6204a?auto=format&fit=crop&w=300&q=80"}
-        ],
-        jobs: ["Doctor", "Engineer", "Researcher", "Pharmacist", "Biologist"],
-        video: "https://www.youtube.com/embed/Q0FDL6dJ5kM"
+          {name:"Biology", desc:"Study living organisms from cells to ecosystems.", jobs:["Doctor","Biologist","Researcher"]},
+          {name:"Chemistry", desc:"Explore chemicals, reactions, and materials.", jobs:["Chemist","Pharmacist","Researcher"]},
+          {name:"Physics", desc:"Understand forces, energy, and the universe.", jobs:["Physicist","Engineer","Researcher"]},
+          {name:"Mathematics", desc:"Work with numbers, patterns, and models.", jobs:["Mathematician","Data Analyst","Teacher"]}
+        ]
       },
       social: {
-        description: "Social Science students study human society, behavior, history, and relationships to improve communities and understand social structures.",
-        universities: ["Addis Ababa University", "Haramaya University", "Arba Minch University", "Jimma University"],
+        description: "Social Science students study human society, behavior, and relationships.",
         branches: [
-          {name:"History", img:"https://images.unsplash.com/photo-1602582233241-2ec832a3e4c6?auto=format&fit=crop&w=300&q=80"},
-          {name:"Economics", img:"https://images.unsplash.com/photo-1611095973514-6442f0c4692b?auto=format&fit=crop&w=300&q=80"},
-          {name:"Sociology", img:"https://images.unsplash.com/photo-1601982132450-22b9c8f76a02?auto=format&fit=crop&w=300&q=80"},
-          {name:"Political Science", img:"https://images.unsplash.com/photo-1569830921097-5c25ed8c04e3?auto=format&fit=crop&w=300&q=80"}
-        ],
-        jobs: ["Teacher", "Sociologist", "Economist", "Government Official", "Researcher"],
-        video: "https://www.youtube.com/embed/1wM0P8-NnRo"
+          {name:"History", desc:"Study past events and civilizations.", jobs:["Teacher","Historian","Researcher"]},
+          {name:"Economics", desc:"Analyze economy, markets, and resources.", jobs:["Economist","Financial Analyst","Researcher"]},
+          {name:"Sociology", desc:"Understand human behavior and society.", jobs:["Sociologist","Social Worker","Researcher"]},
+          {name:"Political Science", desc:"Study government, policies, and politics.", jobs:["Politician","Policy Analyst","Researcher"]}
+        ]
       }
     };
 
-    function showInfo(stream) {
-      const data = infoData[stream];
-      const resultDiv = document.getElementById('result');
-
-      // University filter dropdown
-      const universityFilter = `<label for="uni">Filter Universities:</label>
-        <select id="uni" onchange="filterUniversities('${stream}')">
-          <option value="all">All</option>
-          ${data.universities.map(u => `<option value="${u}">${u}</option>`).join('')}
-        </select>`;
-
-      resultDiv.innerHTML = `
-        <h3>${stream === 'natural' ? 'Natural Science' : 'Social Science'}</h3>
-        <p>${data.description}</p>
-        ${universityFilter}
-        <ul id="uni-list">${data.universities.map(u => `<li>${u}</li>`).join('')}</ul>
-        <div class="branch-container">
-          ${data.branches.map(b => `
-            <div class="branch-card">
-              <img src="${b.img}" alt="${b.name}">
-              <h3>${b.name}</h3>
-            </div>
-          `).join('')}
-        </div>
-        <h3>Possible Careers</h3>
-        <ul>${data.jobs.map(j => `<li>${j}</li>`).join('')}</ul>
-        <iframe src="${data.video}" title="Career Video" allowfullscreen></iframe>
-      `;
-    }
-
-    function filterUniversities(stream) {
-      const selected = document.getElementById('uni').value;
-      const data = infoData[stream];
-      const uniList = document.getElementById('uni-list');
-      uniList.innerHTML = selected === 'all' ? data.universities.map(u => `<li>${u}</li>`).join('') : `<li>${selected}</li>`;
-    }
-
-    function toggleMenu() {
-      document.getElementById("sidebar").classList.toggle("hidden");
+    function showStream(streamKey) {
+      const stream = streams[streamKey];
+      const branchArea = document.getElementById("branch-area");
+      branchArea.innerHTML = `<p>${stream.description}</p><div class="branch-container">` +
+        stream.branches.map(b => `
+          <div class="branch-card">
+            <h3>${b.name}</h3>
+            <p>${b.desc}</p>
+            <p><strong>Jobs:</strong></p>
+            <ul>${b.jobs.map(job => `<li>${job}</li>`).join('')}</ul>
+          </div>
+        `).join('') +
+      `</div>`;
     }
   </script>
 </body>
