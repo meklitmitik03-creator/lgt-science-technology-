@@ -1,257 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LGT - Science World</title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      background-color: #0a0a0a;
-      color: #f1c40f;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGT - Science</title>
+<style>
+body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'Poppins', sans-serif; overflow-x:hidden; }
 
-    /* Sidebar */
-    .sidebar {
-      width: 150px;
-      background: #111;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: fixed;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      transition: transform 0.3s ease;
-      z-index: 100;
-    }
+/* Sidebar */
+.sidebar { width:150px; background:#111; padding:20px; display:flex; flex-direction:column; align-items:center; position:fixed; height:100vh; top:0; left:0; transition:transform 0.3s ease; z-index:100; }
+.sidebar.hidden { transform:translateX(-100%); }
+.sidebar .logo { width:85px; height:85px; margin-bottom:8px; }
+.sidebar h1 { margin-bottom:20px; }
+.nav-links { display:flex; flex-direction:column; margin-top:20px; }
+.nav-links a { color:#f1c40f; text-decoration:none; margin:8px 0; font-weight:600; transition:0.3s; }
+.nav-links a:hover { color:white; }
 
-    .sidebar.hidden { transform: translateX(-100%); }
+/* Toggle button */
+.menu-toggle { position:fixed; top:15px; left:15px; background:#f1c40f; color:black; border:none; font-size:1.5rem; border-radius:5px; padding:6px 12px; cursor:pointer; z-index:200; }
+.menu-toggle:hover { background:white; }
 
-    .sidebar .logo { width: 85px; height: 85px; margin-bottom: 8px; }
+/* Main content */
+.main-content { margin-left:250px; width:calc(100% - 250px); transition:margin-left 0.3s ease; padding:20px; }
+.sidebar.hidden ~ .main-content { margin-left:0; width:100%; }
 
-    .sidebar h1 { margin-bottom: 20px; }
+/* Branch Cards */
+.branch-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:900px; margin:auto; }
+.branch-card { background:#111; border:1px solid #f1c40f; border-radius:10px; padding:15px; transition:0.3s; cursor:pointer; text-align:left; }
+.branch-card:hover { background:#f1c40f; color:#000; transform:translateY(-5px); }
+.branch-card h3 { font-size:1.3rem; margin-bottom:8px; }
+.branch-card p { font-size:0.95rem; margin-bottom:8px; }
+.branch-card .details { display:none; margin-top:10px; font-size:0.9rem; }
+.branch-card button { background:#f1c40f; color:black; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-weight:600; }
+.branch-card button:hover { background:white; }
 
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-    }
-
-    .nav-links a {
-      color: #f1c40f;
-      text-decoration: none;
-      margin: 8px 0;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover { color: white; }
-
-    /* Toggle button */
-    .menu-toggle {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: #f1c40f;
-      color: black;
-      border: none;
-      font-size: 1.5rem;
-      border-radius: 5px;
-      padding: 6px 12px;
-      cursor: pointer;
-      z-index: 200;
-    }
-
-    .menu-toggle:hover { background: white; }
-
-    /* Main content */
-    .main-content {
-      margin-left: 250px;
-      width: calc(100% - 250px);
-      transition: margin-left 0.3s ease;
-      padding: 20px;
-    }
-
-    .sidebar.hidden ~ .main-content { margin-left: 0; width: 100%; }
-
-    /* Sections */
-    .section { text-align: center; padding: 40px 20px; width: 100%; }
-    .section h2 { color: #f1c40f; font-size: 2rem; margin-bottom: 30px; }
-
-    /* Branch Cards */
-    .branch-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .branch-card {
-      background: #111;
-      border: 1px solid #f1c40f;
-      border-radius: 10px;
-      padding: 15px;
-      transition: 0.3s;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .branch-card:hover { background: #f1c40f; color: #000; transform: translateY(-5px); }
-
-    .branch-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
-    .branch-card p { font-size: 0.95rem; margin-bottom: 10px; }
-
-    .branch-card button {
-      background: #f1c40f;
-      color: black;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    .branch-card button:hover { background: white; }
-
-    /* Fun Facts */
-    .fun-facts ul { list-style: none; padding-left: 0; max-width: 700px; margin: auto; text-align: left; }
-    .fun-facts li { margin-bottom: 10px; font-size: 1rem; }
-
-    /* Scientists */
-    .scientists { max-width: 900px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: center; }
-    .scientist-card { background:#111; border:1px solid #f1c40f; border-radius:10px; padding:15px; transition:0.3s; }
-    .scientist-card:hover { background:#f1c40f; color:#000; transform: translateY(-5px); }
-    .scientist-card img { width:100%; border-radius:10px; margin-bottom:10px; }
-  </style>
+/* Fun Facts */
+.fun-facts ul { list-style:none; padding-left:0; max-width:700px; margin:auto; text-align:left; }
+.fun-facts li { margin-bottom:10px; font-size:1rem; }
+</style>
 </head>
 <body>
-  <!-- Toggle -->
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <img src="logo.png" class="logo" onerror="this.style.display='none'">
-    <h1>LGT</h1>
-    <nav class="nav-links">
-      <a href="index.html">🏠 Home</a>
-      <a href="science.html">🔬 Science</a>
-      <a href="guidance.html">🎓 Guidance</a>
-      <a href="technology.html">🧠 Technology</a>
-      <a href="workspace.html">🧾 My Work Space</a>
-      <a href="profile.html">👤 Profile</a>
-      <a href="signin.html">🔑 Sign In</a>
-    </nav>
-  </aside>
+<!-- Toggle -->
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <!-- Main Content -->
-  <div class="main-content">
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+<img src="logo.png" class="logo" onerror="this.style.display='none'">
+<h1>LGT</h1>
+<nav class="nav-links">
+<a href="index.html">🏠 Home</a>
+<a href="science.html">🔬 Science</a>
+<a href="guidance.html">🎓 Guidance</a>
+<a href="technology.html">🧠 Technology</a>
+<a href="workspace.html">🧾 My Work Space</a>
+<a href="profile.html">👤 Profile</a>
+<a href="signin.html">🔑 Sign In</a>
+</nav>
+</aside>
 
-    <!-- Branches -->
-    <section class="section">
-      <h2>🌍 Branches of Science</h2>
-      <h3>Natural Science</h3>
-      <div class="branch-container">
-        <div class="branch-card">
-          <h3>Biology</h3>
-          <p>Study living organisms from cells to ecosystems.</p>
-          <button onclick="window.location.href='guidance.html?stream=natural&branch=Biology'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Chemistry</h3>
-          <p>Explore chemicals, reactions, and materials.</p>
-          <button onclick="window.location.href='guidance.html?stream=natural&branch=Chemistry'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Physics</h3>
-          <p>Understand forces, energy, and the universe.</p>
-          <button onclick="window.location.href='guidance.html?stream=natural&branch=Physics'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Earth Science</h3>
-          <p>Study Earth's land, water, atmosphere, and life.</p>
-          <button onclick="window.location.href='guidance.html?stream=natural&branch=Earth Science'">Learn More</button>
-        </div>
-      </div>
+<!-- Main Content -->
+<div class="main-content">
 
-      <h3 style="margin-top:40px;">Social Science</h3>
-      <div class="branch-container">
-        <div class="branch-card">
-          <h3>History</h3>
-          <p>Study past events and civilizations.</p>
-          <button onclick="window.location.href='guidance.html?stream=social&branch=History'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Economics</h3>
-          <p>Analyze economy, markets, and resources.</p>
-          <button onclick="window.location.href='guidance.html?stream=social&branch=Economics'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Sociology</h3>
-          <p>Understand human behavior and society.</p>
-          <button onclick="window.location.href='guidance.html?stream=social&branch=Sociology'">Learn More</button>
-        </div>
-        <div class="branch-card">
-          <h3>Political Science</h3>
-          <p>Study government, policies, and politics.</p>
-          <button onclick="window.location.href='guidance.html?stream=social&branch=Political Science'">Learn More</button>
-        </div>
-      </div>
-    </section>
+<section class="fun-facts">
+<h2>🌍 Branches of Natural Science</h2>
+<div class="branch-container">
 
-    <!-- Fun Facts -->
-    <section class="section fun-facts">
-      <h2>🧪 Fun Facts About Science & Earth</h2>
-      <ul>
-        <li>Earth is the only planet known to support life.</li>
-        <li>Water covers 71% of the Earth's surface.</li>
-        <li>The human brain has ~86 billion neurons.</li>
-        <li>Bananas are berries, but strawberries are not.</li>
-        <li>Volcanoes and earthquakes are studied in Earth Science.</li>
-        <li>Newton's Laws explain movement in space and on Earth.</li>
-        <li>Coral reefs are vital ecosystems for thousands of species.</li>
-        <li>Marie Curie discovered Radium and Polonium.</li>
-        <li>Einstein developed the theory of relativity.</li>
-        <li>Cells are the building blocks of all living things.</li>
-      </ul>
-    </section>
+<div class="branch-card">
+<h3>Biology</h3>
+<p>Study of living organisms and life processes.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> High school biology, advanced biology courses.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Hawassa University.</p>
+<p><strong>Careers:</strong> Biologist, Doctor, Geneticist, Ecologist.</p>
+<p><strong>Fun Fact:</strong> The human body has over 37 trillion cells.</p>
+</div>
+</div>
 
-    <!-- Scientists Spotlight -->
-    <section class="section">
-      <h2>👩‍🔬 Famous Scientists</h2>
-      <div class="scientists">
-        <div class="scientist-card">
-          <img src="einstein.jpg" alt="Albert Einstein" onerror="this.style.display='none'">
-          <h3>Albert Einstein</h3>
-          <p>Developed the theory of relativity.</p>
-        </div>
-        <div class="scientist-card">
-          <img src="curie.jpg" alt="Marie Curie" onerror="this.style.display='none'">
-          <h3>Marie Curie</h3>
-          <p>Discovered Radium and Polonium.</p>
-        </div>
-        <div class="scientist-card">
-          <img src="newton.jpg" alt="Isaac Newton" onerror="this.style.display='none'">
-          <h3>Isaac Newton</h3>
-          <p>Formulated the laws of motion and gravity.</p>
-        </div>
-        <div class="scientist-card">
-          <img src="darwin.jpg" alt="Charles Darwin" onerror="this.style.display='none'">
-          <h3>Charles Darwin</h3>
-          <p>Theory of Evolution through natural selection.</p>
-        </div>
-      </div>
-    </section>
+<div class="branch-card">
+<h3>Chemistry</h3>
+<p>Study of substances, reactions, and properties of matter.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> High school chemistry, lab practice.</p>
+<p><strong>Universities:</strong> Jimma University, Mekelle University.</p>
+<p><strong>Careers:</strong> Chemist, Pharmacist, Lab Technician.</p>
+<p><strong>Fun Fact:</strong> Water can exist in three states at the same time under special conditions.</p>
+</div>
+</div>
 
-  </div>
+<div class="branch-card">
+<h3>Physics</h3>
+<p>Study of matter, energy, and the universe.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> Physics courses, calculus, experiments.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Bahir Dar University.</p>
+<p><strong>Careers:</strong> Physicist, Engineer, Researcher, Astronomer.</p>
+<p><strong>Fun Fact:</strong> Light from the Sun takes about 8 minutes to reach Earth.</p>
+</div>
+</div>
 
-  <script>
-    function toggleMenu() { document.getElementById("sidebar").classList.toggle("hidden"); }
-  </script>
+<div class="branch-card">
+<h3>Earth Science</h3>
+<p>Study of Earth's structure, land, water, and atmosphere.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> Geography, geology, environmental science courses.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Jimma University.</p>
+<p><strong>Careers:</strong> Geologist, Meteorologist, Environmental Scientist.</p>
+<p><strong>Fun Fact:</strong> Volcanoes and earthquakes are part of Earth science.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+</div>
+
+<script>
+function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
+
+function toggleDetails(button){
+  const details = button.nextElementSibling;
+  if(details.style.display === "block"){ details.style.display="none"; button.textContent="Show Details"; }
+  else{ details.style.display="block"; button.textContent="Hide Details"; }
+}
+</script>
+
 </body>
 </html>
