@@ -4,74 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LGT - Ethiopian Science & Technology</title>
-  <style>/* Merry Slide-Out Panel */
-#merry-panel {
-  position: fixed;
-  right: -300px;
-  top: 0;
-  width: 100px;
-  height: 50%;
-  background: #111;
-  border-left: 2px solid #f1c40f;
-  padding: 15px;
-  color: #f1c40f;
-  transition: 0.4s;
-  display: flex;
-  flex-direction: column;
-}
-
-#merry-panel.open {
-  right: 0;
-}
-
-#merry-chat-box {
-  flex: 1;
-  overflow-y: auto;
-  border: 1px solid #f1c40f;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-#merry-input {
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-#merry-send {
-  padding: 8px;
-  border: none;
-  background: #f1c40f;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#merry-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #f1c40f;
-  color: black;
-  border: none;
-  padding: 18px;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-    <!-- Merry AI Slide-Out Assistant -->
-<div id="merry-panel">
-  <h3>🤖 Merry AI Assistant</h3>
-  <div id="merry-chat-box"></div>
-  <input id="merry-input" type="text" placeholder="Ask me anything..." />
-  <button id="merry-send">Send</button>
-</div>
-
-<!-- Floating Button -->
-<button id="merry-toggle">💬</button>
-
+  <style>
     body {
       margin: 0;
       display: flex;
@@ -315,38 +248,12 @@
     </section>
   </div>
 
-  <script>const toggle = document.getElementById("merry-toggle");
-const panel = document.getElementById("merry-panel");
-const chatBox = document.getElementById("merry-chat-box");
-const input = document.getElementById("merry-input");
-
-toggle.onclick = () => {
-  panel.classList.toggle("open");
-};
-
-// For now Merry will answer simple messages (we will connect real AI later)
-document.getElementById("merry-send").onclick = () => {
-  let userText = input.value.trim();
-  if (userText === "") return;
-
-  chatBox.innerHTML += `<div><b>You:</b> ${userText}</div>`;
-  
-  // Temporary Merry Response
-  chatBox.innerHTML += `<div><b>Merry:</b> I'm here! Soon I will be a real AI!</div>`;
-
-  chatBox.scrollTop = chatBox.scrollHeight;
-  input.value = "";
-};
-
+  <script>
     function toggleMenu() {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.toggle("hidden");
     }
   </script>
-
 </body>
 </html>
-
-
-
 
