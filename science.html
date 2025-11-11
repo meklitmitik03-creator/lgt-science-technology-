@@ -37,6 +37,14 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 /* Fun Facts */
 .fun-facts ul { list-style:none; padding-left:0; max-width:700px; margin:auto; text-align:left; }
 .fun-facts li { margin-bottom:10px; font-size:1rem; }
+
+/* Scientists */
+.scientists { max-width:900px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; text-align:center; margin-top:50px; }
+.scientist-card { background:#111; border:1px solid #f1c40f; border-radius:10px; padding:15px; transition:0.3s; }
+.scientist-card:hover { background:#f1c40f; color:#000; transform:translateY(-5px); }
+.scientist-card img { width:100%; border-radius:10px; margin-bottom:10px; }
+
+.section-title { text-align:center; margin-top:50px; margin-bottom:30px; font-size:2rem; }
 </style>
 </head>
 <body>
@@ -62,8 +70,8 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 <!-- Main Content -->
 <div class="main-content">
 
-<section class="fun-facts">
-<h2>🌍 Branches of Natural Science</h2>
+<!-- Natural Science -->
+<h2 class="section-title">🌍 Natural Science Branches</h2>
 <div class="branch-container">
 
 <div class="branch-card">
@@ -115,19 +123,81 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 </div>
 
 </div>
-</section>
+
+<!-- Social Science -->
+<h2 class="section-title">🌐 Social Science Branches</h2>
+<div class="branch-container">
+
+<div class="branch-card">
+<h3>History</h3>
+<p>Study of past events, civilizations, and cultures.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> History courses, literature, cultural studies.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Bahir Dar University.</p>
+<p><strong>Careers:</strong> Historian, Archaeologist, Teacher, Museum Curator.</p>
+<p><strong>Fun Fact:</strong> The oldest known written story is over 4,000 years old.</p>
+</div>
+</div>
+
+<div class="branch-card">
+<h3>Economics</h3>
+<p>Study of resources, markets, and wealth distribution.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> Economics courses, math, statistics.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Jimma University.</p>
+<p><strong>Careers:</strong> Economist, Financial Analyst, Policy Advisor, Banker.</p>
+<p><strong>Fun Fact:</strong> The concept of supply and demand dates back to the 18th century.</p>
+</div>
+</div>
+
+<div class="branch-card">
+<h3>Sociology</h3>
+<p>Study of human society, behavior, and social relationships.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> Sociology, psychology, research methods.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Mekelle University.</p>
+<p><strong>Careers:</strong> Sociologist, Social Worker, Researcher, Policy Analyst.</p>
+<p><strong>Fun Fact:</strong> Sociology helps explain why people behave differently in groups.</p>
+</div>
+</div>
+
+<div class="branch-card">
+<h3>Political Science</h3>
+<p>Study of government, politics, and international relations.</p>
+<button onclick="toggleDetails(this)">Show Details</button>
+<div class="details">
+<p><strong>Education:</strong> Political theory, history, law, international relations.</p>
+<p><strong>Universities:</strong> Addis Ababa University, Hawassa University.</p>
+<p><strong>Careers:</strong> Political Analyst, Diplomat, Government Officer, Lawyer.</p>
+<p><strong>Fun Fact:</strong> Political science helps predict election outcomes and policy impacts.</p>
+</div>
+</div>
 
 </div>
 
-<script>
-function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
+<!-- Scientists Spotlight -->
+<h2 class="section-title">👩‍🔬 Famous Scientists</h2>
+<div class="scientists">
+<div class="scientist-card">
+<img src="einstein.jpg" alt="Albert Einstein" onerror="this.style.display='none'">
+<h3>Albert Einstein</h3>
+<p>Developed the theory of relativity.</p>
+</div>
 
-function toggleDetails(button){
-  const details = button.nextElementSibling;
-  if(details.style.display === "block"){ details.style.display="none"; button.textContent="Show Details"; }
-  else{ details.style.display="block"; button.textContent="Hide Details"; }
-}
-</script>
+<div class="scientist-card">
+<img src="curie.jpg" alt="Marie Curie" onerror="this.style.display='none'">
+<h3>Marie Curie</h3>
+<p>Discovered Radium and Polonium.</p>
+</div>
 
-</body>
-</html>
+<div class="scientist-card">
+<img src="newton.jpg" alt="Isaac Newton" onerror="this.style.display='none'">
+<h3>Isaac Newton</h3>
+<p>Formulated the laws of motion and gravity.</p>
+</div>
+
+<div class="scientist-card">
+<img src="darwin.jpg" alt="Charles Darwin" onerror="this.styl
