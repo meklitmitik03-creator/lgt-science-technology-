@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LGT - Student Guidance</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      background-color: #0a0a0a;
+      color: #f1c40f;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 150px;
+      background: #111;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      transition: transform 0.3s ease;
+      z-index: 100;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar .logo {
+      width: 85px;
+      height: 85px;
+      margin-bottom: 8px;
+    }
+
+    .sidebar h1 {
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .nav-links a {
+      color: #f1c40f;
+      text-decoration: none; 
+      margin: 8px 0;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    /* Toggle button */
+    .menu-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #f1c40f;
+      color: black;
+      border: none;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      padding: 6px 12px;
+      cursor: pointer;
+      z-index: 200;
+    }
+
+    .menu-toggle:hover {
+      background: white;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 250px;
+      width: calc(100% - 250px);
+      transition: margin-left 0.3s ease;
+      padding: 20px;
+    }
+
+    .sidebar.hidden ~ .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+
+    /* Branch Section */
+    .branches {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #0a0a0a;
+      width: 100%;
+    }
+
+    .branches h2 {
+      color: #f1c40f;
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .branch-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .branch-card {
+      background: #111;
+      border: 1px solid #f1c40f;
+      border-radius: 10px;
+      padding: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .branch-card:hover {
+      background: #f1c40f;
+      color: #000;
+      transform: translateY(-5px);
+    }
+
+    .branch-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .branch-card p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+
+    .branch-card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background: #111;
+      color: #f1c40f;
+      border: 1px solid #f1c40f;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      margin-top: 15px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Toggle Menu Button -->
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <img src="logo.png" class="logo" onerror="this.style.display='none'">
+    <h1>LGT</h1>
+    <nav class="nav-links">
+      <a href="index.html">🏠 Home</a>
+      <a href="science.html">🔬 Science</a>
+      <a href="technology.html">🧠 Technology</a>
+      <a href="workspace.html">🧾 My Work Space</a>
+      <a href="profile.html">👤 Profile</a>
+      <a href="signin.html">🔑 Sign In</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <section class="branches">
+      <h2>🎓 Student Guidance Portal</h2>
+      <div class="branch-container">
+        <div class="branch-card" onclick="showInfo('natural')">
+          <h3>Natural Science</h3>
+          <p>Biology, Chemistry, Physics, Math</p>
+        </div>
+
+        <div class="branch-card" onclick="showInfo('social')">
+          <h3>Social Science</h3>
+          <p>History, Economics, Sociology, Political Science</p>
+        </div>
+      </div>
+
+      <div id="result" style="margin-top:40px;"></div>
+    </section>
+  </div>
+
+  <script>
+    const infoData = {
+      natural: {
+        description: "Natural Science students focus on understanding the natural world, including living organisms, chemistry, physics, and mathematics.",
+        universities: ["Addis Ababa University", "Jimma University", "Bahir Dar University", "Haramaya University"],
+        branches: [
+          {name:"Biology", img:"https://images.unsplash.com/photo-1581091215366-2f243091b899?auto=format&fit=crop&w=300&q=80"},
+          {name:"Chemistry", img:"https://images.unsplash.com/photo-1581091870620-0ec3a0a2b015?auto=format&fit=crop&w=300&q=80"},
+          {name:"Physics", img:"https://images.unsplash.com/photo-1581090700229-7a60cb2f3f3f?auto=format&fit=crop&w=300&q=80"},
+          {name:"Mathematics", img:"https://images.unsplash.com/photo-1601933471061-b6dbd4c6204a?auto=format&fit=crop&w=300&q=80"}
+        ],
+        jobs: ["Doctor", "Engineer", "Researcher", "Pharmacist", "Biologist"],
+        video: "https://www.youtube.com/embed/Q0FDL6dJ5kM"
+      },
+      social: {
+        description: "Social Science students study human society, behavior, history, and relationships to improve communities and understand social structures.",
+        universities: ["Addis Ababa University", "Haramaya University", "Arba Minch University", "Jimma University"],
+        branches: [
+          {name:"History", img:"https://images.unsplash.com/photo-1602582233241-2ec832a3e4c6?auto=format&fit=crop&w=300&q=80"},
+          {name:"Economics", img:"https://images.unsplash.com/photo-1611095973514-6442f0c4692b?auto=format&fit=crop&w=300&q=80"},
+          {name:"Sociology", img:"https://images.unsplash.com/photo-1601982132450-22b9c8f76a02?auto=format&fit=crop&w=300&q=80"},
+          {name:"Political Science", img:"https://images.unsplash.com/photo-1569830921097-5c25ed8c04e3?auto=format&fit=crop&w=300&q=80"}
+        ],
+        jobs: ["Teacher", "Sociologist", "Economist", "Government Official", "Researcher"],
+        video: "https://www.youtube.com/embed/1wM0P8-NnRo"
+      }
+    };
+
+    function showInfo(stream) {
+      const data = infoData[stream];
+      const resultDiv = document.getElementById('result');
+
+      // University filter dropdown
+      const universityFilter = `<label for="uni">Filter Universities:</label>
+        <select id="uni" onchange="filterUniversities('${stream}')">
+          <option value="all">All</option>
+          ${data.universities.map(u => `<option value="${u}">${u}</option>`).join('')}
+        </select>`;
+
+      resultDiv.innerHTML = `
+        <h3>${stream === 'natural' ? 'Natural Science' : 'Social Science'}</h3>
+        <p>${data.description}</p>
+        ${universityFilter}
+        <ul id="uni-list">${data.universities.map(u => `<li>${u}</li>`).join('')}</ul>
+        <div class="branch-container">
+          ${data.branches.map(b => `
+            <div class="branch-card">
+              <img src="${b.img}" alt="${b.name}">
+              <h3>${b.name}</h3>
+            </div>
+          `).join('')}
+        </div>
+        <h3>Possible Careers</h3>
+        <ul>${data.jobs.map(j => `<li>${j}</li>`).join('')}</ul>
+        <iframe src="${data.video}" title="Career Video" allowfullscreen></iframe>
+      `;
+    }
+
+    function filterUniversities(stream) {
+      const selected = document.getElementById('uni').value;
+      const data = infoData[stream];
+      const uniList = document.getElementById('uni-list');
+      uniList.innerHTML = selected === 'all' ? data.universities.map(u => `<li>${u}</li>`).join('') : `<li>${selected}</li>`;
+    }
+
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>
