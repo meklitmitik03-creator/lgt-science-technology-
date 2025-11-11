@@ -190,7 +190,7 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 <div class="scientist-card">
 <img src="curie.jpg" alt="Marie Curie" onerror="this.style.display='none'">
 <h3>Marie Curie</h3>
-<p>Discovered Radium and Polonium she was a grate woman scientist.</p>
+<p>Discovered Radium and Polonium.</p>
 </div>
 
 <div class="scientist-card">
@@ -200,4 +200,23 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 </div>
 
 <div class="scientist-card">
-<img src="darwin.jpg" alt="Charles Darwin" onerror="this.styl
+<img src="darwin.jpg" alt="Charles Darwin" onerror="this.style.display='none'">
+<h3>Charles Darwin</h3>
+<p>Theory of Evolution through natural selection.</p>
+</div>
+</div>
+
+</div>
+
+<script>
+function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
+
+function toggleDetails(button){
+  const details = button.nextElementSibling;
+  if(details.style.display === "block"){ details.style.display="none"; button.textContent="Show Details"; }
+  else{ details.style.display="block"; button.textContent="Hide Details"; }
+}
+</script>
+
+</body>
+</html>
