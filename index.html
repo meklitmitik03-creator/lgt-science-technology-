@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGT - Sign In</title>
+<style>
+body {
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#0a0a0a;
+  color:#f1c40f;
+  font-family:'Poppins', sans-serif;
+}
+.login-container {
+  background:#111;
+  padding:30px;
+  border:1px solid #f1c40f;
+  border-radius:10px;
+  width:300px;
+  text-align:center;
+}
+.login-container h2 { margin-bottom:20px; }
+.login-container input {
+  width:90%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:5px;
+  border:none;
+}
+.login-container button {
+  padding:10px 20px;
+  margin-top:10px;
+  background:#f1c40f;
+  color:black;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+.login-container button:hover { background:white; }
+.error { color:red; font-size:0.9rem; }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+<h2>LGT Sign In</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<div class="error" id="errorMsg"></div>
+<button onclick="login()">Sign In</button>
+</div>
+
+<script>
+function login() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  
+  // Example login check
+  if(username === 'student' && password === '1234') {
+    // Redirect to home page
+    window.location.href = 'home.html';
+  } else {
+    document.getElementById('errorMsg').textContent = 'Invalid username or password!';
+  }
+}
+</script>
+
+</body>
+</html>
