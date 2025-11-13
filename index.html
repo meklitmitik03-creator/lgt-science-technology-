@@ -48,19 +48,24 @@ body {
 
 <div class="login-container">
 <h2>LGT Sign In</h2>
-<input type="text" id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
+<input type="text" id="username" placeholder="Username" required>
+<input type="password" id="password" placeholder="Password" required>
 <div class="error" id="errorMsg"></div>
 <button onclick="login()">Sign In</button>
 </div>
 
 <script>
+// On page load, clear any previous login
+localStorage.removeItem('loggedIn');
+
 function login() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  
-  // Example login check
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  // Check credentials (example)
   if(username === 'student' && password === '1234') {
+    // Save login state
+    localStorage.setItem('loggedIn', 'true');
     // Redirect to home page
     window.location.href = 'home.html';
   } else {
