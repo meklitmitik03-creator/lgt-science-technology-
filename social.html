@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Natural Science - Guidance</title>
+<title>Social Science - Guidance</title>
 <style>
 body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f1c40f; display:flex; overflow-x:hidden; }
 
@@ -29,8 +29,9 @@ body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f
 .branch-card:hover { background:#f1c40f; color:#000; transform:translateY(-5px); }
 .branch-card h3 { font-size:1.3rem; margin-bottom:8px; }
 .branch-card p { font-size:0.95rem; margin-bottom:8px; }
-.branch-card .details { margin-top:10px; font-size:0.9rem; }
-
+.branch-card .details { margin-top:10px; font-size:0.9rem; display:none; }
+.branch-card button { background:#f1c40f; color:black; border:none; padding:6px 12px; border-radius:5px; cursor:pointer; font-weight:600; }
+.branch-card button:hover { background:white; }
 </style>
 </head>
 <body>
@@ -48,47 +49,55 @@ body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f
 </aside>
 
 <div class="main-content">
-<h1>Natural Science in Ethiopian Curriculum</h1>
-<p>Students study Physics, Chemistry, Biology, and Earth Science.</p>
+<h1>Social Science in Ethiopian Curriculum</h1>
+<p>Students study History, Economics, Sociology, and Political Science.</p>
 
 <div class="branch-container">
 <div class="branch-card">
-<h3>Physics</h3>
+<h3>History</h3>
+<p>Study of past events</p>
+<button onclick="toggleDetails(this)">Show Details</button>
 <div class="details">
-<p><strong>Education:</strong> High school physics, lab experiments</p>
+<p><strong>Education:</strong> High school history, literature, cultural studies</p>
 <p><strong>Universities:</strong> Addis Ababa University, Bahir Dar University</p>
-<p><strong>Careers:</strong> Physicist, Engineer, Researcher</p>
-<p><strong>Scholarships & Countries:</strong> Erasmus, DAAD, USA, Germany</p>
+<p><strong>Careers:</strong> Historian, Archaeologist, Teacher</p>
+<p><strong>Scholarships & Countries:</strong> Erasmus, USA, UK</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Chemistry</h3>
+<h3>Economics</h3>
+<p>Study of markets and wealth</p>
+<button onclick="toggleDetails(this)">Show Details</button>
 <div class="details">
-<p><strong>Education:</strong> High school chemistry, lab practice</p>
-<p><strong>Universities:</strong> Jimma University, Mekelle University</p>
-<p><strong>Careers:</strong> Chemist, Pharmacist, Lab Technician</p>
-<p><strong>Scholarships & Countries:</strong> Erasmus, Australia, Canada</p>
+<p><strong>Education:</strong> Economics, math, statistics</p>
+<p><strong>Universities:</strong> Addis Ababa University, Jimma University</p>
+<p><strong>Careers:</strong> Economist, Financial Analyst, Policy Advisor</p>
+<p><strong>Scholarships & Countries:</strong> Erasmus, Germany, Canada</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Biology</h3>
+<h3>Sociology</h3>
+<p>Study of society</p>
+<button onclick="toggleDetails(this)">Show Details</button>
 <div class="details">
-<p><strong>Education:</strong> High school biology, advanced biology</p>
-<p><strong>Universities:</strong> Addis Ababa University, Hawassa University</p>
-<p><strong>Careers:</strong> Doctor, Biologist, Geneticist</p>
+<p><strong>Education:</strong> Sociology, psychology, research methods</p>
+<p><strong>Universities:</strong> Addis Ababa University, Mekelle University</p>
+<p><strong>Careers:</strong> Sociologist, Social Worker, Researcher</p>
 <p><strong>Scholarships & Countries:</strong> USA, UK, Erasmus</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Earth Science</h3>
+<h3>Political Science</h3>
+<p>Study of government and politics</p>
+<button onclick="toggleDetails(this)">Show Details</button>
 <div class="details">
-<p><strong>Education:</strong> Geography, geology, environmental science courses</p>
-<p><strong>Universities:</strong> Addis Ababa University, Jimma University</p>
-<p><strong>Careers:</strong> Geologist, Meteorologist, Environmental Scientist</p>
-<p><strong>Scholarships & Countries:</strong> Germany, USA, Erasmus</p>
+<p><strong>Education:</strong> Political theory, history, law, international relations</p>
+<p><strong>Universities:</strong> Addis Ababa University, Hawassa University</p>
+<p><strong>Careers:</strong> Political Analyst, Diplomat, Government Officer</p>
+<p><strong>Scholarships & Countries:</strong> USA, Germany, Erasmus</p>
 </div>
 </div>
 
@@ -97,6 +106,7 @@ body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f
 
 <script>
 function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
+function toggleDetails(btn){ const details = btn.nextElementSibling; if(details.style.display==='block'){ details.style.display='none'; btn.textContent='Show Details'; } else{ details.style.display='block'; btn.textContent='Hide Details'; } }
 </script>
 </body>
 </html>
