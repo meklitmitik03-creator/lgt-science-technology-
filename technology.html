@@ -1,193 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LGT | Technology</title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      height: 100vh;
-      background-color: #0a0a0a;
-      color: #f1c40f;
-      font-family: "Poppins", sans-serif;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGT - Technology</title>
+<style>
+body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'Poppins', sans-serif; overflow-x:hidden; }
 
-    /* Sidebar (same as home & science) */
-    .sidebar {
-      width: 150px;
-      background: #111;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+/* Sidebar */
+.sidebar { width:150px; background:#111; padding:20px; display:flex; flex-direction:column; align-items:center; position:fixed; height:100vh; top:0; left:0; z-index:100; }
+.sidebar.hidden { transform:translateX(-100%); }
+.sidebar .logo { width:85px; height:85px; margin-bottom:8px; }
+.sidebar h1 { margin-bottom:20px; }
+.nav-links { display:flex; flex-direction:column; margin-top:20px; }
+.nav-links a { color:#f1c40f; text-decoration:none; margin:8px 0; font-weight:600; }
+.nav-links a:hover { color:white; }
 
-    .sidebar .logo {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
-    }
+/* Toggle button */
+.menu-toggle { position:fixed; top:15px; left:15px; background:#f1c40f; color:black; border:none; font-size:1.5rem; border-radius:5px; padding:6px 12px; cursor:pointer; z-index:200; }
+.menu-toggle:hover { background:white; }
 
-    .sidebar h1 {
-      font-size: 22px;
-      margin-bottom: 20px;
-    }
+/* Main content */
+.main-content { margin-left:250px; width:calc(100% - 250px); transition:margin-left 0.3s ease; padding:20px; }
+.sidebar.hidden ~ .main-content { margin-left:0; width:100%; }
 
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-      width: 100%;
-    }
+/* Page title */
+.section-title { text-align:center; margin-top:30px; margin-bottom:20px; font-size:2rem; }
 
-    .nav-links a {
-      color: #f1c40f;
-      text-decoration: none;
-      margin: 10px 0;
-      font-weight: 600;
-      transition: 0.3s;
-      padding: 10px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .nav-links a:hover {
-      background: #f1c40f;
-      color: #111;
-    }
-
-    /* Main content */
-    .main-content {
-      flex: 1;
-      padding: 40px;
-      overflow-y: auto;
-    }
-
-    .main-content h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-      color: #f1c40f;
-      border-bottom: 2px solid #f1c40f;
-      padding-bottom: 10px;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* Cards layout */
-    .tech-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: #1a1a1a;
-      border: 1px solid #f1c40f33;
-      border-radius: 15px;
-      padding: 20px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px #f1c40f33;
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      color: #f1c40f;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #ddd;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Scrollbar styling */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #f1c40f;
-      border-radius: 10px;
-    }
-  </style>
+/* Technology Cards */
+.tech-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:1000px; margin:auto; }
+.tech-card { background:#111; border:1px solid #f1c40f; border-radius:10px; padding:20px; transition:0.3s; text-align:center; }
+.tech-card:hover { background:#f1c40f; color:#000; transform:translateY(-5px); }
+.tech-card h3 { margin-bottom:10px; font-size:1.5rem; }
+.tech-card p { font-size:1rem; margin-bottom:15px; }
+.tech-card button { background:#f1c40f; color:black; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; }
+.tech-card button:hover { background:white; }
+</style>
 </head>
 <body>
-   <aside class="sidebar">
-    <img src="logo.png" class="logo" onerror="this.style.display='none'">
-    <h1>LGT</h1>
-    <nav class="nav-links">
-  <a href="index.html">🏠 Home</a>
+
+<!-- Toggle -->
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+<img src="logo.png" class="logo" onerror="this.style.display='none'">
+<h1>LGT</h1>
+<nav class="nav-links">
+  <a href="home.html">🏠 Home</a>
   <a href="science.html">🔬 Science</a>
   <a href="technology.html">🧠 Technology</a>
   <a href="guidance.html">🎓 Guidance</a>
   <a href="global.html">🌎 Global News</a>
   <a href="workspace.html">🧾 My Work Space</a>
   <a href="profile.html">👤 Profile</a>
-  <a href="signin.html">🔑 Sign In</a>
 </nav>
-  </aside>
+</aside>
 
-  <div class="main-content">
-    <h2>Explore the World of Technology</h2>
-    <div class="tech-card">
-  <h3>🧠 Artificial Intelligence</h3>
-  <p>Learn about machines that can think, learn, and solve problems like humans.</p>
-  <button onclick="window.location.href='ai.html'">Explore AI</button>
+<!-- Main Content -->
+<div class="main-content">
+<h2 class="section-title">🖥️ Explore Technology Fields</h2>
+<div class="tech-container">
+
+  <div class="tech-card">
+    <h3>🤖 Robotics</h3>
+    <p>Machines and systems designed to perform tasks automatically, from industrial robots to humanoids.</p>
+    <button onclick="window.location.href='robotics.html'">Explore Robotics</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>🧬 Biotechnology</h3>
+    <p>Combining biology and technology to develop new medicines, crops, and bio-solutions.</p>
+    <button onclick="window.location.href='biotechnology.html'">Explore Biotechnology</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>💻 Artificial Intelligence</h3>
+    <p>Machines that can think, learn, and solve problems like humans.</p>
+    <button onclick="window.location.href='ai.html'">Explore AI</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>💾 Computer Science</h3>
+    <p>Programming, software development, algorithms, and computing innovations.</p>
+    <button onclick="window.location.href='computerscience.html'">Explore CS</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>🌐 Information Technology</h3>
+    <p>Networking, cybersecurity, cloud computing, and digital infrastructure.</p>
+    <button onclick="window.location.href='it.html'">Explore IT</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>🔋 Renewable Energy</h3>
+    <p>Technologies to generate clean energy from solar, wind, and sustainable sources.</p>
+    <button onclick="window.location.href='renewable.html'">Explore Renewable Energy</button>
+  </div>
+
+  <div class="tech-card">
+    <h3>🛰️ Space Technology</h3>
+    <p>Satellites, spacecraft, and technologies for exploring and utilizing space.</p>
+    <button onclick="window.location.href='spacetech.html'">Explore Space Tech</button>
+  </div>
+
+</div>
 </div>
 
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2020/02/16/15/32/biotechnology-4858430_960_720.jpg" alt="Biotechnology">
-        <h3>Biotechnology</h3>
-        <p>Combines biology and technology to improve health, agriculture, and the environment — including genetic engineering and medicine development.</p>
-      </div>
+<script>
+function toggleMenu(){
+  document.getElementById("sidebar").classList.toggle("hidden");
+}
+</script>
 
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2018/02/17/09/15/nanotechnology-3158450_960_720.jpg" alt="Nanotechnology">
-        <h3>Nanotechnology</h3>
-        <p>Works at the atomic and molecular level to create materials and devices with revolutionary medical and industrial applications.</p>
-      </div>
-
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2018/01/09/07/28/robot-3075392_960_720.jpg" alt="Robotics">
-        <h3>Robotics</h3>
-        <p>Designs intelligent machines capable of performing complex tasks — from factory robots to advanced humanoid helpers.</p>
-      </div>
-
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2020/05/07/05/23/artificial-intelligence-5136664_960_720.jpg" alt="Artificial Intelligence">
-        <h3>Artificial Intelligence (AI)</h3>
-        <p>Gives machines the ability to learn, reason, and make decisions — driving innovations in healthcare, business, and education.</p>
-      </div>
-
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2018/01/17/07/15/solar-panels-3086888_960_720.jpg" alt="Green Technology">
-        <h3>Green Technology</h3>
-        <p>Focuses on eco-friendly solutions like renewable energy, electric cars, and sustainable materials to protect our planet.</p>
-      </div>
-
-      <div class="card">
-        <img src="https://cdn.pixabay.com/photo/2016/02/23/22/28/space-1219131_960_720.jpg" alt="Space Technology">
-        <h3>Space Technology</h3>
-        <p>Explores the universe with rockets, satellites, and telescopes — advancing human knowledge and global communication.</p>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
