@@ -3,21 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Social Science - Guidance</title>
+<title>Natural Science - Guidance</title>
 <style>
-body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f1c40f; display:flex; }
+body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f1c40f; display:flex; overflow-x:hidden; }
+
 /* Sidebar */
-.sidebar { width:150px; background:#111; padding:20px; display:flex; flex-direction:column; align-items:center; position:fixed; height:100vh; top:0; left:0; z-index:100; }
-.sidebar.hidden { transform:translateX(-100%); transition:0.3s; }
+.sidebar { width:150px; background:#111; padding:20px; display:flex; flex-direction:column; align-items:center; position:fixed; height:100vh; top:0; left:0; transition:transform 0.3s ease; z-index:100; }
+.sidebar.hidden { transform:translateX(-100%); }
 .sidebar .logo { width:85px; height:85px; margin-bottom:8px; }
 .sidebar h1 { margin-bottom:20px; }
-.sidebar .nav-links a { color:#f1c40f; text-decoration:none; margin:8px 0; font-weight:600; }
-.sidebar .nav-links a:hover { color:white; }
+.nav-links { display:flex; flex-direction:column; margin-top:20px; }
+.nav-links a { color:#f1c40f; text-decoration:none; margin:8px 0; font-weight:600; }
+.nav-links a:hover { color:white; }
+
 /* Toggle button */
 .menu-toggle { position:fixed; top:15px; left:15px; background:#f1c40f; color:black; border:none; font-size:1.5rem; border-radius:5px; padding:6px 12px; cursor:pointer; z-index:200; }
 .menu-toggle:hover { background:white; }
+
 /* Main content */
 .main-content { margin-left:250px; width:calc(100% - 250px); padding:40px; text-align:left; transition:margin-left 0.3s ease; }
+
 /* Branch Cards */
 .branch-container { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; max-width:900px; margin:auto; }
 .branch-card { background:#111; border:1px solid #f1c40f; border-radius:10px; padding:15px; transition:0.3s; cursor:pointer; }
@@ -25,6 +30,7 @@ body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f
 .branch-card h3 { font-size:1.3rem; margin-bottom:8px; }
 .branch-card p { font-size:0.95rem; margin-bottom:8px; }
 .branch-card .details { margin-top:10px; font-size:0.9rem; }
+
 </style>
 </head>
 <body>
@@ -35,68 +41,62 @@ body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f
 <img src="logo.png" class="logo" onerror="this.style.display='none'">
 <h1>LGT</h1>
 <nav class="nav-links">
-  <a href="home.html">🏠 Home</a>
+  <a href="guidance.html">⬅️ Back</a>
   <a href="science.html">🔬 Science</a>
   <a href="technology.html">🧠 Technology</a>
-  <a href="guidance.html">🎓 Guidance</a>
-  <a href="global.html">🌎 Global News</a>
-  <a href="workspace.html">🧾 My Work Space</a>
-  <a href="profile.html">👤 Profile</a>
-  <a href="signin.html">🔑 Sign In</a>
 </nav>
-
 </aside>
 
 <div class="main-content">
-<h1>Social Science in Ethiopian Curriculum</h1>
-<p>Students study History, Economics, Sociology, and Political Science. Each branch opens opportunities for universities and careers.</p>
+<h1>Natural Science in Ethiopian Curriculum</h1>
+<p>Students study Physics, Chemistry, Biology, and Earth Science.</p>
 
 <div class="branch-container">
 <div class="branch-card">
-<h3>History</h3>
+<h3>Physics</h3>
 <div class="details">
-<p><strong>Education:</strong> High school history, literature, cultural studies</p>
+<p><strong>Education:</strong> High school physics, lab experiments</p>
 <p><strong>Universities:</strong> Addis Ababa University, Bahir Dar University</p>
-<p><strong>Careers:</strong> Historian, Archaeologist, Teacher, Museum Curator</p>
-<p><strong>Scholarships & Countries:</strong> Erasmus, USA, UK</p>
+<p><strong>Careers:</strong> Physicist, Engineer, Researcher</p>
+<p><strong>Scholarships & Countries:</strong> Erasmus, DAAD, USA, Germany</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Economics</h3>
+<h3>Chemistry</h3>
 <div class="details">
-<p><strong>Education:</strong> Economics, math, statistics</p>
-<p><strong>Universities:</strong> Addis Ababa University, Jimma University</p>
-<p><strong>Careers:</strong> Economist, Financial Analyst, Policy Advisor, Banker</p>
-<p><strong>Scholarships & Countries:</strong> Erasmus, Germany, Canada</p>
+<p><strong>Education:</strong> High school chemistry, lab practice</p>
+<p><strong>Universities:</strong> Jimma University, Mekelle University</p>
+<p><strong>Careers:</strong> Chemist, Pharmacist, Lab Technician</p>
+<p><strong>Scholarships & Countries:</strong> Erasmus, Australia, Canada</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Sociology</h3>
+<h3>Biology</h3>
 <div class="details">
-<p><strong>Education:</strong> Sociology, psychology, research methods</p>
-<p><strong>Universities:</strong> Addis Ababa University, Mekelle University</p>
-<p><strong>Careers:</strong> Sociologist, Social Worker, Researcher, Policy Analyst</p>
+<p><strong>Education:</strong> High school biology, advanced biology</p>
+<p><strong>Universities:</strong> Addis Ababa University, Hawassa University</p>
+<p><strong>Careers:</strong> Doctor, Biologist, Geneticist</p>
 <p><strong>Scholarships & Countries:</strong> USA, UK, Erasmus</p>
 </div>
 </div>
 
 <div class="branch-card">
-<h3>Political Science</h3>
+<h3>Earth Science</h3>
 <div class="details">
-<p><strong>Education:</strong> Political theory, history, law, international relations</p>
-<p><strong>Universities:</strong> Addis Ababa University, Hawassa University</p>
-<p><strong>Careers:</strong> Political Analyst, Diplomat, Government Officer, Lawyer</p>
-<p><strong>Scholarships & Countries:</strong> USA, Germany, Erasmus</p>
+<p><strong>Education:</strong> Geography, geology, environmental science courses</p>
+<p><strong>Universities:</strong> Addis Ababa University, Jimma University</p>
+<p><strong>Careers:</strong> Geologist, Meteorologist, Environmental Scientist</p>
+<p><strong>Scholarships & Countries:</strong> Germany, USA, Erasmus</p>
 </div>
 </div>
+
 </div>
 </div>
 
 <script>
 function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
 </script>
-
 </body>
 </html>
