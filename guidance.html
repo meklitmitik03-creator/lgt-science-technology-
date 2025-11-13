@@ -1,175 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LGT - Student Guidance</title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      background-color: #0a0a0a;
-      color: #f1c40f;
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LGT - Guidance</title>
+<style>
+body { margin:0; font-family:'Poppins', sans-serif; background:#0a0a0a; color:#f1c40f; display:flex; }
 
-    /* Sidebar */
-    .sidebar {
-      width: 150px;
-      background: #111;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: fixed;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      transition: transform 0.3s ease;
-      z-index: 100;
-    }
+/* Sidebar */
+.sidebar { width:150px; background:#111; padding:20px; display:flex; flex-direction:column; align-items:center; position:fixed; height:100vh; top:0; left:0; z-index:100; }
+.sidebar.hidden { transform:translateX(-100%); transition:0.3s; }
+.sidebar .logo { width:85px; height:85px; margin-bottom:8px; }
+.sidebar h1 { margin-bottom:20px; }
+.nav-links { display:flex; flex-direction:column; margin-top:20px; }
+.nav-links a { color:#f1c40f; text-decoration:none; margin:8px 0; font-weight:600; }
+.nav-links a:hover { color:white; }
 
-    .sidebar.hidden {
-      transform: translateX(-100%);
-    }
+/* Toggle button */
+.menu-toggle { position:fixed; top:15px; left:15px; background:#f1c40f; color:black; border:none; font-size:1.5rem; border-radius:5px; padding:6px 12px; cursor:pointer; z-index:200; }
+.menu-toggle:hover { background:white; }
 
-    .sidebar .logo {
-      width: 85px;
-      height: 85px;
-      margin-bottom: 8px;
-    }
+/* Main content */
+.main-content { margin-left:250px; width:calc(100% - 250px); padding:40px; text-align:center; transition:margin-left 0.3s ease; }
 
-    .sidebar h1 {
-      margin-bottom: 20px;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-    }
-
-    .nav-links a {
-      color: #f1c40f;
-      text-decoration: none; 
-      margin: 8px 0;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: white;
-    }
-
-    /* Toggle button */
-    .menu-toggle {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      background: #f1c40f;
-      color: black;
-      border: none;
-      font-size: 1.5rem;
-      border-radius: 5px;
-      padding: 6px 12px;
-      cursor: pointer;
-      z-index: 200;
-    }
-
-    .menu-toggle:hover {
-      background: white;
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left: 250px;
-      width: calc(100% - 250px);
-      transition: margin-left 0.3s ease;
-      padding: 20px;
-    }
-
-    .sidebar.hidden ~ .main-content {
-      margin-left: 0;
-      width: 100%;
-    }
-
-    /* Guidance Section */
-    .branches {
-      text-align: center;
-      padding: 40px 20px;
-      width: 100%;
-    }
-
-    .branches h2 {
-      color: #f1c40f;
-      font-size: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .branch-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .branch-card {
-      background: #111;
-      border: 1px solid #f1c40f;
-      border-radius: 10px;
-      padding: 15px;
-      transition: 0.3s;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .branch-card:hover {
-      background: #f1c40f;
-      color: #000;
-      transform: translateY(-5px);
-    }
-
-    .branch-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .branch-card p {
-      font-size: 0.95rem;
-      margin-bottom: 8px;
-    }
-
-    .branch-card ul {
-      margin-left: 20px;
-    }
-
-    button.stream-btn {
-      background: #f1c40f;
-      color: black;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    button.stream-btn:hover {
-      background: white;
-    }
-  </style>
+/* Stream Buttons */
+.stream-container { display:flex; justify-content:center; gap:40px; margin-top:80px; flex-wrap:wrap; }
+.stream-card { background:#111; border:2px solid #f1c40f; border-radius:15px; padding:40px 60px; cursor:pointer; transition:0.3s; font-size:1.5rem; font-weight:bold; }
+.stream-card:hover { background:#f1c40f; color:#000; transform:translateY(-5px); }
+</style>
 </head>
 <body>
-  <!-- Toggle Menu Button -->
-  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-    <img src="logo.png" class="logo" onerror="this.style.display='none'">
-    <h1>LGT</h1>
-   <nav class="nav-links">
+<!-- Toggle -->
+<button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+<img src="logo.png" class="logo" onerror="this.style.display='none'">
+<h1>LGT</h1>
+<nav class="nav-links">
   <a href="index.html">🏠 Home</a>
   <a href="science.html">🔬 Science</a>
   <a href="technology.html">🧠 Technology</a>
@@ -177,61 +46,22 @@
   <a href="global.html">🌎 Global News</a>
   <a href="workspace.html">🧾 My Work Space</a>
   <a href="profile.html">👤 Profile</a>
-  <a href="signin.html">🔑 Sign In</a>
 </nav>
-  </aside>
+</aside>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <section class="branches">
-      <h2>🎓 Student Guidance</h2>
-      <button class="stream-btn" onclick="showStream('natural')">Natural Science</button>
-      <button class="stream-btn" onclick="showStream('social')">Social Science</button>
+<!-- Main Content -->
+<div class="main-content">
+<h1>🎓 Guidance for Students</h1>
+<p>Choose your stream to see curriculum, university opportunities, and career paths in Ethiopia and abroad.</p>
 
-      <div id="branch-area" style="margin-top:30px;"></div>
-    </section>
-  </div>
+<div class="stream-container">
+<div class="stream-card" onclick="window.location.href='natural.html'">Natural Science</div>
+<div class="stream-card" onclick="window.location.href='social.html'">Social Science</div>
+</div>
+</div>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("sidebar").classList.toggle("hidden");
-    }
-
-    const streams = {
-      natural: {
-        description: "Natural Science students focus on the natural world, including Biology, Chemistry, Physics, and Math.",
-        branches: [
-          {name:"Biology", desc:"Study living organisms from cells to ecosystems.", jobs:["Doctor","Biologist","Researcher"]},
-          {name:"Chemistry", desc:"Explore chemicals, reactions, and materials.", jobs:["Chemist","Pharmacist","Researcher"]},
-          {name:"Physics", desc:"Understand forces, energy, and the universe.", jobs:["Physicist","Engineer","Researcher"]},
-          {name:"Mathematics", desc:"Work with numbers, patterns, and models.", jobs:["Mathematician","Data Analyst","Teacher"]}
-        ]
-      },
-      social: {
-        description: "Social Science students study human society, behavior, and relationships.",
-        branches: [
-          {name:"History", desc:"Study past events and civilizations.", jobs:["Teacher","Historian","Researcher"]},
-          {name:"Economics", desc:"Analyze economy, markets, and resources.", jobs:["Economist","Financial Analyst","Researcher"]},
-          {name:"Sociology", desc:"Understand human behavior and society.", jobs:["Sociologist","Social Worker","Researcher"]},
-          {name:"Political Science", desc:"Study government, policies, and politics.", jobs:["Politician","Policy Analyst","Researcher"]}
-        ]
-      }
-    };
-
-    function showStream(streamKey) {
-      const stream = streams[streamKey];
-      const branchArea = document.getElementById("branch-area");
-      branchArea.innerHTML = `<p>${stream.description}</p><div class="branch-container">` +
-        stream.branches.map(b => `
-          <div class="branch-card">
-            <h3>${b.name}</h3>
-            <p>${b.desc}</p>
-            <p><strong>Jobs:</strong></p>
-            <ul>${b.jobs.map(job => `<li>${job}</li>`).join('')}</ul>
-          </div>
-        `).join('') +
-      `</div>`;
-    }
-  </script>
+<script>
+function toggleMenu(){ document.getElementById("sidebar").classList.toggle("hidden"); }
+</script>
 </body>
 </html>
