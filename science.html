@@ -21,7 +21,7 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 .menu-toggle:hover { background:white; }
 
 /* Main content */
-.main-content { margin-left:250px; width:calc(100% - 250px); transition:margin-left 0.3s ease; padding:20px; }
+.main-content { margin-left:250px; width:calc(100% - 250px); transition:margin-left 0.3s ease; padding:20px; position:relative; z-index:1; }
 .sidebar.hidden ~ .main-content { margin-left:0; width:100%; }
 
 /* Branch Cards */
@@ -45,6 +45,9 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 .scientist-card img { width:100%; border-radius:10px; margin-bottom:10px; }
 
 .section-title { text-align:center; margin-top:50px; margin-bottom:30px; font-size:2rem; }
+
+/* Background Slideshow */
+.bg-slide { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; background-size:cover; background-position:center; transition: background-image 1s ease-in-out; }
 </style>
 </head>
 <body>
@@ -57,7 +60,6 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
 <img src="logo.png" class="logo" onerror="this.style.display='none'">
 <h1>LGT</h1>
 <nav class="nav-links">
-<nav class="nav-links">
   <a href="index.html">🏠 Home</a>
   <a href="science.html">🔬 Science</a>
   <a href="technology.html">🧠 Technology</a>
@@ -68,6 +70,9 @@ body { margin:0; display:flex; background:#0a0a0a; color:#f1c40f; font-family:'P
   <a href="signin.html">🔑 Sign In</a>
 </nav>
 </aside>
+
+<!-- Background Slideshow -->
+<div class="bg-slide" id="bg-slide"></div>
 
 <!-- Main Content -->
 <div class="main-content">
@@ -218,6 +223,21 @@ function toggleDetails(button){
   if(details.style.display === "block"){ details.style.display="none"; button.textContent="Show Details"; }
   else{ details.style.display="block"; button.textContent="Hide Details"; }
 }
+
+// Background Slideshow
+const bgSlide = document.getElementById('bg-slide');
+const images = [
+  'science1.jpg', // replace with your 3 images
+  'science2.jpg',
+  'science3.jpg'
+];
+let index = 0;
+function slideBackground() {
+  bgSlide.style.backgroundImage = `url('${images[index]}')`;
+  index = (index + 1) % images.length;
+}
+slideBackground();
+setInterval(slideBackground, 5000); // change every 5 seconds
 </script>
 
 </body>
