@@ -250,7 +250,8 @@
 
       try {
         // Connects to your backend server
-        const res = await axios.post("http://localhost:3000/merry", { question });
+const res = await axios.post("https://merry-lgt.onrender.com/merry", { question });
+
         responseDiv.innerHTML = res.data.answer;
       } catch (err) {
         console.error(err);
@@ -262,3 +263,4 @@
   </script>
 </body>
 </html>
+
