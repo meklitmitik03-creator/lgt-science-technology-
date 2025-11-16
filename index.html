@@ -93,7 +93,7 @@
       width: 100%;
     }
 
-    /* Landing Section */
+    /* 🌟 Landing Section */
     .landing {
       background: linear-gradient(135deg, #000, #1a1a1a);
       text-align: center;
@@ -131,7 +131,7 @@
       color: black;
     }
 
-    /* Branches Section */
+    /* 🧬 Branches of Science Section */
     .branches {
       text-align: center;
       padding: 60px 20px;
@@ -189,65 +189,6 @@
     .branch-card button:hover {
       background: white;
     }
-
-    /* Merry AI Box */
-    .merry-box {
-      background: #111;
-      border-top: 3px solid #f1c40f;
-      padding: 20px;
-      margin-top: 40px;
-      border-radius: 12px;
-      color: #f1c40f;
-    }
-
-    .merry-box h3 {
-      margin: 0;
-      color: #f39c12;
-    }
-
-    .merry-box p {
-      opacity: 0.8;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .merry-box textarea {
-      width: 100%;
-      height: 80px;
-      border-radius: 8px;
-      border: none;
-      padding: 10px;
-      outline: none;
-      font-size: 15px;
-      background: #222;
-      color: #fff;
-    }
-
-    .merry-box button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 12px;
-      background: #f1c40f;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .merry-box button:hover {
-      background: #d4ac0d;
-    }
-
-    .merry-response {
-      margin-top: 15px;
-      padding: 10px;
-      background: #222;
-      color: #fff;
-      border-radius: 8px;
-      white-space: pre-wrap;
-    }
-
   </style>
 </head>
 <body>
@@ -258,15 +199,17 @@
   <aside class="sidebar" id="sidebar">
     <img src="logo.png" class="logo" onerror="this.style.display='none'">
     <h1>LGT</h1>
-    <nav class="nav-links">
-      <a href="index.html">🏠 Home</a>
-      <a href="science.html">🔬 Science</a>
-      <a href="technology.html">🧠 Technology</a>
-      <a href="guidance.html">🎓 Guidance</a>
-      <a href="global.html">🌎 Global News</a>
-      <a href="workspace.html">🧾 My Work Space</a>
-      <a href="profile.html">👤 Profile</a>
-      <a href="signin.html">🔑 Sign In</a>
+  <nav class="nav-links">
+  <a href="index.html">🏠 Home</a>
+  <a href="science.html">🔬 Science</a>
+  <a href="technology.html">🧠 Technology</a>
+  <a href="guidance.html">🎓 Guidance</a>
+  <a href="global.html">🌎 Global News</a>
+  <a href="workspace.html">🧾 My Work Space</a>
+  <a href="profile.html">👤 Profile</a>
+  <a href="signin.html">🔑 Sign In</a>
+</nav>
+
     </nav>
   </aside>
 
@@ -287,16 +230,19 @@
           <p>Discover the forces and energy that shape our world — from electricity to motion.</p>
           <button onclick="location.href='physics.html'">Learn More</button>
         </div>
+
         <div class="branch-card">
           <h3>⚗️ Chemistry</h3>
           <p>Explore atoms, molecules, and reactions that create everything around us.</p>
           <button onclick="window.location.href='chemistry.html'">Learn More</button>
         </div>
+
         <div class="branch-card">
           <h3>🧫 Biology</h3>
           <p>Study living things — from tiny cells to the ecosystems of our planet.</p>
           <button onclick="window.location.href='biology.html'">Learn More</button>
         </div>
+
         <div class="branch-card">
           <h3>🌋 Earth Science</h3>
           <p>Understand the land, air, and water systems that make Earth our home.</p>
@@ -304,64 +250,18 @@
         </div>
       </div>
     </section>
-
-    <!-- ⭐ Merry AI Box Lower on Page -->
-    <div class="merry-box">
-      <h3>Merry</h3>
-      <p>Ask Merry anything about science, streams, careers or school.</p>
-
-      <textarea id="merry-question" placeholder="Type your question..."></textarea>
-      <button onclick="sendMerry()">Send</button>
-
-      <div id="merry-response" class="merry-response"></div>
-    </div>
-
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     function toggleMenu() {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.toggle("hidden");
     }
-
-    async function sendMerry() {
-      const question = document.getElementById("merry-question").value;
-      const responseDiv = document.getElementById("merry-response");
-
-      if (!question.trim()) {
-        alert("Please type something for Merry!");
-        return;
-      }
-
-      responseDiv.innerHTML = "Merry is thinking... 🤖";
-
-      try {
-        const res = await axios.post(
-          "https://api.openai.com/v1/chat/completions",
-          {
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: question }],
-            max_tokens: 500
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": "Bearer YOUR_OPENAI_API_KEY_HERE"
-            }
-          }
-        );
-
-        const answer = res.data.choices[0].message.content;
-        responseDiv.innerHTML = answer;
-
-      } catch (err) {
-        console.error(err);
-        responseDiv.innerHTML = "Oops! Merry is having trouble answering. 😢";
-      }
-
-      document.getElementById("merry-question").value = "";
-    }
   </script>
 </body>
 </html>
+
+
+
+
+
