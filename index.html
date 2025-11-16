@@ -189,6 +189,64 @@
     .branch-card button:hover {
       background: white;
     }
+
+    /* ⭐⭐ MERRY (BOTTOM AI ASSISTANT) ⭐⭐ */
+    .merry-box {
+      background: #111;
+      border-top: 3px solid #f1c40f;
+      padding: 20px;
+      margin: 40px;
+      margin-left: 260px;
+      border-radius: 12px;
+      color: #f1c40f;
+    }
+
+    .merry-box h3 {
+      margin: 0;
+      color: #f39c12;
+    }
+
+    .merry-box p {
+      opacity: 0.8;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .merry-box textarea {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      border: none;
+      padding: 10px;
+      outline: none;
+      font-size: 15px;
+      background: #222;
+      color: #fff;
+    }
+
+    .merry-box button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      background: #f1c40f;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .merry-box button:hover {
+      background: #d4ac0d;
+    }
+
+    .merry-success {
+      display: none;
+      color: #2ecc71;
+      margin-top: 10px;
+      font-size: 15px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -252,17 +310,37 @@
     </section>
   </div>
 
+  <!-- ⭐⭐⭐ MERRY BOX AT BOTTOM ⭐⭐⭐ -->
+  <div class="merry-box">
+    <h3>Merry</h3>
+    <p>Ask Merry anything about science, streams, careers or school.</p>
+
+    <textarea id="merry-question" placeholder="Type your question..."></textarea>
+
+    <button onclick="sendMerry()">Send</button>
+
+    <div id="merry-success" class="merry-success">
+      ✔ Your question has been sent!
+    </div>
+  </div>
+
   <script>
     function toggleMenu() {
       const sidebar = document.getElementById("sidebar");
       sidebar.classList.toggle("hidden");
     }
+
+    function sendMerry() {
+      const q = document.getElementById("merry-question").value;
+
+      if (q.trim() === "") {
+        alert("Please type something for Merry!");
+        return;
+      }
+
+      document.getElementById("merry-success").style.display = "block";
+      document.getElementById("merry-question").value = "";
+    }
   </script>
 </body>
 </html>
-
-
-
-
-
-
